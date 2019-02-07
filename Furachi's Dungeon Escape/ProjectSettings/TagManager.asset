@@ -9,6 +9,7 @@ TagManager:
   - DropDoor
   - God
   - ButtonHold
+  - SecondState
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Player
+  - Second State
   - 
   - 
   - 

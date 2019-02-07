@@ -67,7 +67,10 @@
     <Compile Include="Assets\Scripts\EnviornmentScripts\HoldButton.cs" />
     <Compile Include="Assets\Scripts\Events\ButtonPressedEvent.cs" />
     <Compile Include="Assets\Scripts\Events\ButtonUnPressedEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\SecondStateCreationEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\SecondStateTransitionEvent.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\MovementControl.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\SecondPlayerScript.cs" />
     <Compile Include="Assets\Scripts\Tools\Singleton.cs" />

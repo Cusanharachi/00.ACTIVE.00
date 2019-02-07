@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class SecondPlayerScript : MonoBehaviour
 {
+        // secondstate
+    [SerializeField]
+    public GameObject secondState;
+
     // second state active
     bool twoBeings;
+    bool secondExists;
 
     // Start is called before the first frame update
     void Start()
     {
         twoBeings = false;
+        secondExists = false;
     }
 
     // Update is called once per frame
@@ -22,10 +28,12 @@ public class SecondPlayerScript : MonoBehaviour
             {
                 twoBeings = true;
 
+                Instantiate(secondState, this.transform);
             }
             else
             {
                 twoBeings = false;
+                Destroy(secondState);
             }
         }
     }
