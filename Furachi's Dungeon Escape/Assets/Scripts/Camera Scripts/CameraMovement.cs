@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraMovement : MonoBehaviour
 {
     // for camera following
     float viewingAngle = 45;
-    float angle = 0;
+    float angle = 90;
     float correctedAngle;
     float distance = 7.0f;
     float hieght = 3.5f;
@@ -18,10 +19,20 @@ public class CameraMovement : MonoBehaviour
     float cameraMovementSpeed = 8.0f;
     float mouseLocation;
 
+    // state transition variables
+    bool targetIsPlayer;
+    bool isSecondHere;
+
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        // creates event
+        EventManager.AddSecondStateChangeListeners(SwitchView);
+
+        targetIsPlayer = true;
+        isSecondHere = false;
     }
 
     // Update is called once per frame
@@ -63,5 +74,55 @@ public class CameraMovement : MonoBehaviour
 
         // provides data into new transform
         transform.SetPositionAndRotation(newVector3, newQuaternion);
+    }
+
+    void SwitchView(Enumeration.secondStateTransitions enumeration)
+    {
+        if (enumeration == Enumeration.secondStateTransitions.addState)
+        {
+            target = GameObject.FindGameObjectWithTag("SecondState").transform;
+            targetIsPlayer = false;
+        }
+        else if (enumeration == Enumeration.secondStateTransitions.removeState)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            targetIsPlayer = true;
+        }
+        else if (enumeration == Enumeration.secondStateTransitions.switchView)
+        {
+            if (targetIsPlayer)
+            {
+                target = GameObject.FindGameObjectWithTag("SecondState").transform;
+                targetIsPlayer = false;
+            }
+            else
+            {
+                target = GameObject.FindGameObjectWithTag("Player").transform;
+                targetIsPlayer = true;
+            }
+        }
+        //if (enumeration == Enumeration.secondStateTransitions.removeState)
+        //{
+        //    isSecondHere = false;
+        //}
+        //if (targetIsPlayer)
+        //{
+        //    targetIsPlayer = false;
+        //}
+        //else
+        //{
+        //    targetIsPlayer = true;
+        //}
+        //if (!targetIsPlayer)
+        //{
+        //    target = GameObject.FindGameObjectWithTag("Player").transform;
+        //}
+        //else
+        //{
+        //    if (GameObject.FindGameObjectWithTag("SecondState") != null)
+        //    {
+        //        target = GameObject.FindGameObjectWithTag("SecondState").transform;
+        //    }
+        //}
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MovementControl : MonoBehaviour
 {
+    // maintains second state options
+    public bool amISecond;
+    bool amIMovable;
+
     // body for motion
     Rigidbody myBody;
 
@@ -27,10 +31,8 @@ public class MovementControl : MonoBehaviour
 
     float puzzlePieceDistance = 4;
 
-    // not holding the cube
+    // cube handling stuff
     bool letGo;
-
-    // for second state
     bool active;
 
     // Start is called before the first frame update
@@ -41,29 +43,36 @@ public class MovementControl : MonoBehaviour
         // sets early
         puzzlepiece = false;
         letGo = true;
+        active = false;
 
         // allows for movement
-        active = true;
+        amIMovable = true;
+
+        // allows for movement changing
+        EventManager.AddSecondStateChangeListeners(ChangeMovabillity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // updates axis data
-        forwardBackward = Input.GetAxis("Vertical") * movementSpeed;
-        sideToSide = ( Input.GetAxis("Horizontal") * rotationSPeed);
-        directionalAxis = new Vector3(0, 0, forwardBackward);
-        // rotationalAxis = new Vector3(0, sideToSide, 0);
+        if (amIMovable)
+        {
+            // updates axis data
+            forwardBackward = Input.GetAxis("Vertical") * movementSpeed;
+            sideToSide = (Input.GetAxis("Horizontal") * rotationSPeed);
+            directionalAxis = new Vector3(0, 0, forwardBackward);
+            // rotationalAxis = new Vector3(0, sideToSide, 0);
 
-        directionalAxis *= Time.deltaTime;
-        sideToSide *= Time.deltaTime;
+            directionalAxis *= Time.deltaTime;
+            sideToSide *= Time.deltaTime;
 
-        // handles rotation
-        this.transform.Rotate(0, sideToSide, 0);
+            // handles rotation
+            this.transform.Rotate(0, sideToSide, 0);
 
-        // adds force to move forward
-        myBody.AddRelativeForce(directionalAxis, ForceMode.Impulse);
+            // adds force to move forward
+            myBody.AddRelativeForce(directionalAxis, ForceMode.Impulse);
 
+        }
         // both statements ensure speed limit is maintained.
         if (myBody.velocity.x > speedLimit.x)
         {
@@ -125,6 +134,7 @@ public class MovementControl : MonoBehaviour
         {
             //Debug.Log("we touched");
             puzzlepiece = true;
+            active = true;
             currentpuzzlepiece = other.gameObject;
         }
     }
@@ -136,7 +146,31 @@ public class MovementControl : MonoBehaviour
             if (!holding)
             {
                 puzzlepiece = true;
-                currentpuzzlepiece = other.gameObject;
+                currentpuzzlepiece = null;
+                active = false;
+            }
+        }
+    }
+
+    void ChangeMovabillity(Enumeration.secondStateTransitions enumeration)
+    {
+        if (enumeration == Enumeration.secondStateTransitions.removeState)
+        {
+            amIMovable = true;
+        }
+        else if (enumeration == Enumeration.secondStateTransitions.addState)
+        {
+            amIMovable = false;
+        }
+        else if (enumeration == Enumeration.secondStateTransitions.switchView)
+        {
+            if (amIMovable)
+            {
+                amIMovable = false;
+            }
+            else
+            {
+                amIMovable = true;
             }
         }
     }

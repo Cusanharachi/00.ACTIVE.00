@@ -13,9 +13,14 @@ public class BasicButton : MonoBehaviour
     ButtonPressedEvent buttonPressedEvent;
     ButtonUnPressedEvent buttonUnPressedEvent;
 
+    bool secondTouchedMe;
+
     // Start is called before the first frame update
     void Start()
     {
+        // handles extra problems
+        secondTouchedMe = false;
+
         // creates new event
         buttonPressedEvent = new ButtonPressedEvent();
 
@@ -32,7 +37,14 @@ public class BasicButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (secondTouchedMe && isHoldButton)
+        {
+            if (GameObject.FindGameObjectWithTag("SecondState") == null)
+            {
+                ButtonUnPressed();
+                secondTouchedMe = false;
+            }
+        }
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -47,6 +59,7 @@ public class BasicButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("gone");
         if (other.gameObject.tag == "Cube01")
         {
             ButtonPressed();
@@ -54,7 +67,13 @@ public class BasicButton : MonoBehaviour
         else if (other.gameObject.tag == "Player")
         {
             ButtonPressed();
+            Debug.Log("player opening");
+        } 
+        else if (other.gameObject.tag == "SecondState")
+        {
+            ButtonPressed();
         }
+
     }
 
     public void ButtonPressed()
@@ -89,6 +108,13 @@ public class BasicButton : MonoBehaviour
         else if (other.gameObject.tag == "Player" && isHoldButton)
         {
             ButtonUnPressed();
+            Debug.Log("Player gone");
+        }
+        else if (other.gameObject.tag == "SecondState" && isHoldButton)
+        {
+            ButtonUnPressed();
+            secondTouchedMe = true;
+            Debug.Log("second state gone");
         }
     }
 

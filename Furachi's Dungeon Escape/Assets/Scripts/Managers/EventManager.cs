@@ -46,6 +46,9 @@ public class EventManager : MonoBehaviour
 
     // objects that invoke the button unpressed method
     static List<GameObject> buttonUnPressedInvokers = new List<GameObject>();
+
+    // objects that inform the state change of the second state
+    static List<GameObject> secondStateChangeInvokers = new List<GameObject>();
     #endregion
 
     // 
@@ -59,6 +62,8 @@ public class EventManager : MonoBehaviour
     // objects that listen for the button unpressed event
     static List<UnityAction<GameObject>> buttonUnPressedListeners = new List<UnityAction<GameObject>>();
 
+    // objects inquiring about the second state change
+    static List<UnityAction<Enumeration.secondStateTransitions>> secondStateChangeListeners = new List<UnityAction<Enumeration.secondStateTransitions>>();
     #endregion
 
     // all invoker and listener pairing happens here
@@ -111,7 +116,7 @@ public class EventManager : MonoBehaviour
     public static void AddButtonUnPressedListeners(UnityAction<GameObject> listener)
     {
         // adds listener to list and to all invokers
-        buttonPressedListeners.Add(listener);
+        buttonUnPressedListeners.Add(listener);
         foreach (GameObject invoker in buttonUnPressedInvokers)
         {
             invoker.GetComponent<BasicButton>().AddButtonUnPressedListener(listener);
@@ -128,6 +133,32 @@ public class EventManager : MonoBehaviour
         foreach (UnityAction<GameObject> listener in buttonUnPressedListeners)
         {
             invoker.GetComponent<BasicButton>().AddButtonUnPressedListener(listener);
+        }
+    }
+
+    /// <summary>
+    /// Pairs second state change events to all listeners
+    /// </summary>
+    public static void AddSecondStateChangeListeners(UnityAction<Enumeration.secondStateTransitions> listener)
+    {
+        // adds listener to list and to all invokers
+        secondStateChangeListeners.Add(listener);
+        foreach (GameObject invoker in secondStateChangeInvokers)
+        {
+            invoker.GetComponent<SecondPlayerScript>().AddSecondStateChangeListener(listener);
+        }
+    }
+
+    /// <sumary>
+    /// pairs all second state invokers to every listener
+    /// </sumary>
+    public static void AddSecondStateChangeInvokers(GameObject invoker)
+    {
+        // adds invoker to list and to all listeners
+        secondStateChangeInvokers.Add(invoker);
+        foreach (UnityAction<Enumeration.secondStateTransitions> listener in secondStateChangeListeners)
+        {
+            invoker.GetComponent<SecondPlayerScript>().AddSecondStateChangeListener(listener);
         }
     }
     #endregion

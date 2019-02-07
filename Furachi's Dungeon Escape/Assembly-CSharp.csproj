@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Events\SecondStateTransitionEvent.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\Misc_\Enumeration.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\MovementControl.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\SecondPlayerScript.cs" />
     <Compile Include="Assets\Scripts\Tools\Singleton.cs" />
