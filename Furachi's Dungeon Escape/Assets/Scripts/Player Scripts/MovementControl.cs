@@ -13,6 +13,7 @@ public class MovementControl : MonoBehaviour
 
     // force strength
     float movementSpeed = 50.0f;
+    // float shiftSpeed = 20.0f;
     float rotationSPeed = 80.0f;
 
     // limiting speed vector
@@ -21,6 +22,7 @@ public class MovementControl : MonoBehaviour
     // values for machanics
     float forwardBackward;
     float sideToSide;
+    float shiftMovement;
     Vector3 directionalAxis;
     // Vector3 rotationalAxis;
 
@@ -50,6 +52,9 @@ public class MovementControl : MonoBehaviour
 
         // allows for movement changing
         EventManager.AddSecondStateChangeListeners(ChangeMovabillity);
+
+        // canceled the shift movement
+        shiftMovement = 0;
     }
 
     // Update is called once per frame
@@ -58,13 +63,14 @@ public class MovementControl : MonoBehaviour
         if (amIMovable)
         {
             // updates axis data
-            forwardBackward = Input.GetAxis("Vertical") * movementSpeed;
-            sideToSide = (Input.GetAxis("Horizontal") * rotationSPeed);
-            directionalAxis = new Vector3(0, 0, forwardBackward);
+            forwardBackward = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime; ;
+            sideToSide = (Input.GetAxis("Horizontal") * rotationSPeed) * Time.deltaTime; ;
+            // shiftMovement = (Input.GetAxis("Horizontal") * shiftSpeed) * Time.deltaTime; ;
+            directionalAxis = new Vector3(shiftMovement, 0, forwardBackward);
             // rotationalAxis = new Vector3(0, sideToSide, 0);
 
-            directionalAxis *= Time.deltaTime;
-            sideToSide *= Time.deltaTime;
+            //directionalAxis *= Time.deltaTime;
+            //sideToSide *= Time.deltaTime;
 
             // handles rotation
             this.transform.Rotate(0, sideToSide, 0);
@@ -97,7 +103,7 @@ public class MovementControl : MonoBehaviour
 
         if (puzzlepiece && active)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && Time.timeScale != 0)
             {
                 if (!holding)
                 {

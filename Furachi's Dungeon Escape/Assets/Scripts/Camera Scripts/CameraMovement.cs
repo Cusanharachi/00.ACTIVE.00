@@ -6,11 +6,13 @@ using UnityEngine.Events;
 public class CameraMovement : MonoBehaviour
 {
     // for camera following
-    float viewingAngle = 45;
     float angle = 90;
+    float playerAngle = 0;
+    float secondAngle = 0;
     float correctedAngle;
     float distance = 7.0f;
     float hieght = 3.5f;
+    float rotationAdjustmentSpeed = 10.0f;
 
     // target for camera
     Transform target;
@@ -21,7 +23,6 @@ public class CameraMovement : MonoBehaviour
 
     // state transition variables
     bool targetIsPlayer;
-    bool isSecondHere;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,6 @@ public class CameraMovement : MonoBehaviour
         EventManager.AddSecondStateChangeListeners(SwitchView);
 
         targetIsPlayer = true;
-        isSecondHere = false;
     }
 
     // Update is called once per frame
@@ -40,7 +40,9 @@ public class CameraMovement : MonoBehaviour
     {
         FindNewTransfrom();
 
-        angle += Input.GetAxis("Mouse X");
+        angle += (Input.GetAxis("Mouse X") * Time.timeScale);
+
+        angle -= (Input.GetAxis("Horizontal") * Time.deltaTime * rotationAdjustmentSpeed);
 
         correctedAngle = (Mathf.Deg2Rad * cameraMovementSpeed * angle);
 
@@ -80,11 +82,17 @@ public class CameraMovement : MonoBehaviour
     {
         if (enumeration == Enumeration.secondStateTransitions.addState)
         {
+            // saves angle for return
+            playerAngle = angle;
+
             target = GameObject.FindGameObjectWithTag("SecondState").transform;
             targetIsPlayer = false;
         }
         else if (enumeration == Enumeration.secondStateTransitions.removeState)
         {
+            // saves angle for return
+            angle = playerAngle;
+
             target = GameObject.FindGameObjectWithTag("Player").transform;
             targetIsPlayer = true;
         }
@@ -92,11 +100,16 @@ public class CameraMovement : MonoBehaviour
         {
             if (targetIsPlayer)
             {
+                // saves angle for return
+                playerAngle = angle;
+                angle = secondAngle;
                 target = GameObject.FindGameObjectWithTag("SecondState").transform;
                 targetIsPlayer = false;
             }
             else
             {
+                secondAngle = angle;
+                angle = playerAngle;
                 target = GameObject.FindGameObjectWithTag("Player").transform;
                 targetIsPlayer = true;
             }

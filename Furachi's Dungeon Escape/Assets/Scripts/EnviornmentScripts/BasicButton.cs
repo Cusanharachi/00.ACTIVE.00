@@ -72,6 +72,7 @@ public class BasicButton : MonoBehaviour
         else if (other.gameObject.tag == "SecondState")
         {
             ButtonPressed();
+            secondTouchedMe = true;
         }
 
     }
@@ -108,15 +109,24 @@ public class BasicButton : MonoBehaviour
         else if (other.gameObject.tag == "Player" && isHoldButton)
         {
             ButtonUnPressed();
-            Debug.Log("Player gone");
         }
         else if (other.gameObject.tag == "SecondState" && isHoldButton)
         {
             ButtonUnPressed();
-            secondTouchedMe = true;
-            Debug.Log("second state gone");
         }
     }
+
+    //void OnCollisionStay(Collision collisionInfo)
+    //{
+    //    // Debug-draw all contact points and normals
+    //    foreach (ContactPoint contact in collisionInfo.contacts)
+    //    {
+    //        if (contact.otherCollider.gameObject.tag == "SecondState")
+    //        {
+
+    //        }
+    //    }
+    //}
 
     public void ButtonUnPressed()
     {

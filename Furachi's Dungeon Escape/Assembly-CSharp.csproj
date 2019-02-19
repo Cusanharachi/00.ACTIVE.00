@@ -76,20 +76,27 @@
     <Compile Include="Assets\Scripts\Player Scripts\SecondPlayerScript.cs" />
     <Compile Include="Assets\Scripts\Tools\Singleton.cs" />
     <Compile Include="Assets\Scripts\Tools\Timer.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\BackToMenu.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\ExitGameButton.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\MenuButtons.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\PlayButton.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\ToControlsButton.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\ToMainMenuButton.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/yunau/Desktop/School World Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/yunau/Desktop/School Work Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/yunau/Desktop/School World Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/yunau/Desktop/School Work Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/yunau/Desktop/School World Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/yunau/Desktop/School Work Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/yunau/Desktop/School World Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/yunau/Desktop/School Work Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/yunau/Desktop/School World Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/yunau/Desktop/School Work Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -296,13 +303,13 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/yunau/Desktop/School World Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/yunau/Desktop/School Work Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/yunau/Desktop/School World Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/yunau/Desktop/School Work Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/yunau/Desktop/School World Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/yunau/Desktop/School Work Spring 2019/00.ACTIVE.00/Furachi's Dungeon Escape/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

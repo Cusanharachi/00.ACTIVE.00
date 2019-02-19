@@ -10,6 +10,8 @@ TagManager:
   - God
   - ButtonHold
   - SecondState
+  - SecondaryInterface
+  - MainMenuInterface
   layers:
   - Default
   - TransparentFX
@@ -46,4 +48,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MainMenu
+    uniqueID: 3614724791
+    locked: 0
+  - name: AltMenu
+    uniqueID: 3290579969
     locked: 0

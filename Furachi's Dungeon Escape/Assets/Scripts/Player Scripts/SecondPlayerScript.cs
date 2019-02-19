@@ -31,7 +31,7 @@ public class SecondPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.Q) && Time.timeScale != 0)
         {
             if (!twoBeings)
             {
@@ -50,7 +50,7 @@ public class SecondPlayerScript : MonoBehaviour
                 secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);
             }
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && GameObject.FindGameObjectWithTag("SecondState") != null)
+        else if (Input.GetKeyUp(KeyCode.Space) && GameObject.FindGameObjectWithTag("SecondState") != null && Time.timeScale != 0)
         {
             secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.switchView);
         }
