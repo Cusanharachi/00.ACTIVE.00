@@ -37,6 +37,13 @@ public class MovementControl : MonoBehaviour
     bool letGo;
     bool active;
 
+    // jumping movement
+    bool isJumping;
+    float jumpingPower = 10;
+    float jumpingaltered = 0;
+    float jumpingtime = 0.5f;
+    float accumulatedTime = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +62,9 @@ public class MovementControl : MonoBehaviour
 
         // canceled the shift movement
         shiftMovement = 0;
+
+        // prepares jumping
+        isJumping = false;
     }
 
     // Update is called once per frame
@@ -63,10 +73,26 @@ public class MovementControl : MonoBehaviour
         if (amIMovable)
         {
             // updates axis data
-            forwardBackward = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime; ;
-            sideToSide = (Input.GetAxis("Horizontal") * rotationSPeed) * Time.deltaTime; ;
-            // shiftMovement = (Input.GetAxis("Horizontal") * shiftSpeed) * Time.deltaTime; ;
-            directionalAxis = new Vector3(shiftMovement, 0, forwardBackward);
+            forwardBackward = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime;
+            sideToSide = (Input.GetAxis("Horizontal") * rotationSPeed) * Time.deltaTime;
+            // shiftMovement = (Input.GetAxis("Horizontal") * shiftSpeed) * Time.deltaTime;
+
+            // gets jumping power
+            if (!isJumping)
+            {
+                if (accumulatedTime <= jumpingtime)
+                {
+                    jumpingaltered = jumpingPower - accumulatedTime;
+                    accumulatedTime += Time.deltaTime;
+                }
+                else
+                {
+                    jumpingaltered = 0;
+                    isJumping = true;
+                }
+            }
+
+            directionalAxis = new Vector3(shiftMovement, jumpingaltered, forwardBackward);
             // rotationalAxis = new Vector3(0, sideToSide, 0);
 
             //directionalAxis *= Time.deltaTime;

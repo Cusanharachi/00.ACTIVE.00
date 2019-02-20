@@ -65,7 +65,7 @@ public class CameraMovement : MonoBehaviour
         //float yAngle = (Mathf.Atan((preX / preZ)) * 180);
 
         // creates new position and roation
-        Vector3 newVector3 = new Vector3(x, hieght, z);
+        Vector3 newVector3 = new Vector3(x, target.position.y + hieght, z);
 
         Vector3 viewingVector = new Vector3(target.position.x - newVector3.x, target.position.y - newVector3.y, target.position.z - newVector3.z);
 

@@ -17,6 +17,9 @@ public class DropDoor : MonoBehaviour
     ButtonPressedEvent buttonPressedEvent;
     ButtonUnPressedEvent buttonUnPressedEvent;
 
+    // helps with door opening/closing
+    float doorHight = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,12 +52,12 @@ public class DropDoor : MonoBehaviour
 
     void OpenDoor()
     {
-        transform.Translate(0, -transform.localScale.y, 0, transform);
+        transform.Translate(0, -doorHight, 0, transform);
     }
 
     void CloseDoor()
     {
-        transform.Translate(0, transform.localScale.y, 0, transform);
+        transform.Translate(0, doorHight, 0, transform);
     }
 
     /// <summary>

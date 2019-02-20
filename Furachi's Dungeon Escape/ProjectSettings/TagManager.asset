@@ -12,6 +12,7 @@ TagManager:
   - SecondState
   - SecondaryInterface
   - MainMenuInterface
+  - PlayerWall
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Player Buttons
   - Second Buttons
   - Both Buttons
-  - 
+  - Player Wall
   - 
   - 
   - 
