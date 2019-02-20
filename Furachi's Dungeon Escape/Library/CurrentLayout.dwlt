@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 3}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -38,9 +38,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 821
+    x: 664
     y: 0
-    width: 414
+    width: 571
     height: 533
   m_MinSize: {x: 104, y: 124}
   m_MaxSize: {x: 4004, y: 4024}
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 787, y: 498}
   m_MaxSize: {x: 16012, y: 14048}
   vertical: 0
-  controlID: 1698
+  controlID: 39
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 510, y: 498}
   m_MaxSize: {x: 12010, y: 14048}
   vertical: 1
-  controlID: 1699
+  controlID: 40
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_MinSize: {x: 510, y: 224}
   m_MaxSize: {x: 12010, y: 4024}
   vertical: 0
-  controlID: 1700
+  controlID: 41
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -235,7 +235,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 202
     y: 0
-    width: 619
+    width: 462
     height: 533
   m_MinSize: {x: 204, y: 224}
   m_MaxSize: {x: 4004, y: 4024}
@@ -321,9 +321,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 821
+    x: 664
     y: 73
-    width: 410
+    width: 567
     height: 513
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 0
@@ -336,8 +336,8 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -205
-    m_HBaseRangeMax: 205
+    m_HBaseRangeMin: -283.5
+    m_HBaseRangeMax: 283.5
     m_VBaseRangeMin: -248
     m_VBaseRangeMax: 248
     m_HAllowExceedBaseRangeMin: 1
@@ -357,25 +357,25 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
-      width: 410
+      width: 567
       height: 496
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 205, y: 248}
+    m_Translation: {x: 283.5, y: 248}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -205
+      x: -283.5
       y: -248
-      width: 410
+      width: 567
       height: 496
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 410, y: 513}
+  m_LastWindowPixelSize: {x: 567, y: 513}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -409,9 +409,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a8faffff
-      m_LastClickedID: -1368
-      m_ExpandedIDs: 52eaffff3eeeffffc2f7ffffb0f9ffff5cfaffffb0faffffb0fbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 202e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -458,18 +458,18 @@ MonoBehaviour:
     serializedVersion: 2
     x: 202
     y: 73
-    width: 615
+    width: 458
     height: 513
   m_PersistentViewDataDictionary: {fileID: 0}
   m_WindowGUID: ff58b040e3ac6f547a184f30fb724f12
-  m_SceneLighting: 1
+  m_SceneLighting: 0
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 24.537739, y: -10.228225, z: 15.715595}
+    m_Target: {x: 0.36982393, y: 2.8326447, z: 1.7852123}
     speed: 2
-    m_Value: {x: 24.537739, y: -10.228225, z: 15.715595}
+    m_Value: {x: 0.36982393, y: 2.8326447, z: 1.7852123}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -497,13 +497,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.25159687, y: -0.38054729, z: 0.10840025, w: 0.88325095}
+    m_Target: {x: -0.21048254, y: -0.37235516, z: 0.08711144, w: -0.89970016}
     speed: 2
-    m_Value: {x: 0.25159687, y: -0.38054729, z: 0.10840025, w: 0.88325095}
+    m_Value: {x: -0.21048254, y: -0.37235516, z: 0.08711144, w: -0.89970016}
   m_Size:
-    m_Target: 307.0816
+    m_Target: 7.4692054
     speed: 2
-    m_Value: 307.0816
+    m_Value: 7.4692054
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -622,11 +622,11 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Enviornment
+    - Assets/Prefabs/Player
   m_ViewMode: 1
   m_StartGridSize: 50
   m_LastFolders:
-  - Assets/Prefabs/Enviornment
+  - Assets/Prefabs/Player
   m_LastFoldersGridSize: 50
   m_LastProjectPath: C:\Users\yunau\Desktop\School Work Spring 2019\00.ACTIVE.00\Furachi's
     Dungeon Escape
@@ -634,8 +634,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: da280000
-    m_LastClickedID: 10458
+    m_SelectedIDs: e2280000
+    m_LastClickedID: 10466
     m_ExpandedIDs: 00000000fc27000038280000c2280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

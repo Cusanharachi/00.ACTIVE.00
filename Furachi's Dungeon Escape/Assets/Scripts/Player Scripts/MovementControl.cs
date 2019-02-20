@@ -12,7 +12,7 @@ public class MovementControl : MonoBehaviour
     Rigidbody myBody;
 
     // force strength
-    float movementSpeed = 50.0f;
+    float movementSpeed = 20.0f;
     // float shiftSpeed = 20.0f;
     float rotationSPeed = 80.0f;
 
@@ -78,7 +78,7 @@ public class MovementControl : MonoBehaviour
             // shiftMovement = (Input.GetAxis("Horizontal") * shiftSpeed) * Time.deltaTime;
 
             // gets jumping power
-            if (!isJumping)
+            if (Input.GetKeyDown(KeyCode.CapsLock) && !isJumping)
             {
                 if (accumulatedTime <= jumpingtime)
                 {
@@ -89,6 +89,13 @@ public class MovementControl : MonoBehaviour
                 {
                     jumpingaltered = 0;
                     isJumping = true;
+                }
+            }
+            else
+            {
+                if (myBody.velocity.y == 0)
+                {
+                    isJumping = false;
                 }
             }
 
