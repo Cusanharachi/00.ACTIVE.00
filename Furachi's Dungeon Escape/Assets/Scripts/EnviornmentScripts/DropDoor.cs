@@ -5,13 +5,16 @@ using UnityEngine.Events;
 
 public class DropDoor : MonoBehaviour
 {
+    // for door types
+    public bool orDoor;
     // Open requirements
     public List<GameObject> myActivators;
     private  List<bool> allButtonsReady;
 
     // Open conditions
     bool doorOpened; // for list analysis
-    float dropSpeed;
+    float dropSpeed = 1.0f;
+    bool anyButtonsOn;
 
     // events
     ButtonPressedEvent buttonPressedEvent;
@@ -26,9 +29,6 @@ public class DropDoor : MonoBehaviour
         // creates new variables
         allButtonsReady = new List<bool>();
         
-        // door mechanic variables
-        dropSpeed = 2.0f;
-        
         for (int i = 0; i < myActivators.Capacity; i++)
         {
             allButtonsReady.Add(false);
@@ -42,6 +42,8 @@ public class DropDoor : MonoBehaviour
         EventManager.AddButtonPressedListeners(AreAllMyButtonsPressed);
         EventManager.AddButtonUnPressedListeners(AnyUnPressedButtons);
 
+        // for those using the or door
+        anyButtonsOn = false;
     }
 
     // Update is called once per frame
@@ -78,9 +80,17 @@ public class DropDoor : MonoBehaviour
         // checks if ready to open and if so marks it as open
         for (int j = 0; j < myActivators.Capacity; j++)
         {
-            if (!allButtonsReady[j])
+            if (!allButtonsReady[j] && !orDoor)
             {
                 break;
+            }
+            else if (orDoor && allButtonsReady[j])
+            {
+                if (!doorOpened)
+                {
+                    OpenDoor();
+                    doorOpened = true;
+                }
             }
             else if (j == (myActivators.Capacity - 1) && allButtonsReady[j])
             {
@@ -90,7 +100,7 @@ public class DropDoor : MonoBehaviour
                     doorOpened = true;
                 }
             }
-            else
+            else 
             {
                 // does nothing, but here in case of need
             }
@@ -107,15 +117,42 @@ public class DropDoor : MonoBehaviour
         {
             if (myActivators[i] == MightBeMyButton)
             {
-                // sets current button as unlocked 
+                // sets current button as closed
                 allButtonsReady[i] = false;
 
-                // checks if door was opened and closes it if so
-                // also marks door as closed
-                if (doorOpened)
+                if (orDoor)
                 {
-                    CloseDoor();
-                    doorOpened = false;
+                    // resets for testing
+                    anyButtonsOn = false;
+
+                    for (int j = 0; j < myActivators.Capacity; j++)
+                    {
+                        if (allButtonsReady[j])
+                        {
+                            anyButtonsOn = true;
+                            break;
+                        }
+                        else if (j == (myActivators.Capacity - 1))
+                        {
+                            // checks if door was opened and closes it if so
+                            // also marks door as closed
+                            if (doorOpened)
+                            {
+                                CloseDoor();
+                                doorOpened = false;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // checks if door was opened and closes it if so
+                    // also marks door as closed
+                    if (doorOpened)
+                    {
+                        CloseDoor();
+                        doorOpened = false;
+                    }
                 }
             }
         }

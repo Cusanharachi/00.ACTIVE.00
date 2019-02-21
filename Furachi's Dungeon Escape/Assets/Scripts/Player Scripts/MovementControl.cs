@@ -39,10 +39,10 @@ public class MovementControl : MonoBehaviour
 
     // jumping movement
     bool isJumping;
-    float jumpingPower = 10;
+    float jumpingPower = 5.0f;
     float jumpingaltered = 0;
-    float jumpingtime = 0.5f;
-    float accumulatedTime = 0;
+    float jumpingtime = 0.1f;
+    float accumulatedTime;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +65,7 @@ public class MovementControl : MonoBehaviour
 
         // prepares jumping
         isJumping = false;
+        accumulatedTime = 0;
     }
 
     // Update is called once per frame
@@ -80,22 +81,28 @@ public class MovementControl : MonoBehaviour
             // gets jumping power
             if (Input.GetKeyDown(KeyCode.CapsLock) && !isJumping)
             {
-                if (accumulatedTime <= jumpingtime)
-                {
-                    jumpingaltered = jumpingPower - accumulatedTime;
-                    accumulatedTime += Time.deltaTime;
-                }
-                else
-                {
-                    jumpingaltered = 0;
-                    isJumping = true;
-                }
+                //if (accumulatedTime <= jumpingtime)
+                //{
+                //    // jumpingaltered = jumpingPower - accumulatedTime;
+                //    jumpingaltered = jumpingPower;
+                //    accumulatedTime += Time.deltaTime;
+                //}
+                //else
+                //{
+                //    jumpingaltered = 0;
+                //    isJumping = true;
+                //}
+                isJumping = true;
+                jumpingaltered = jumpingPower;
+                accumulatedTime += Time.deltaTime;
             }
             else
             {
+                jumpingaltered = 0;
                 if (myBody.velocity.y == 0)
                 {
                     isJumping = false;
+                    accumulatedTime = 0;
                 }
             }
 

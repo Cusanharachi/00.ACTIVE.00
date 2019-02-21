@@ -8,6 +8,7 @@ public class BasicButton : MonoBehaviour
     // switches button type
     [SerializeField]
     public bool isHoldButton;
+    public bool isReverseButton;
 
     // Event variables
     ButtonPressedEvent buttonPressedEvent;
@@ -32,6 +33,12 @@ public class BasicButton : MonoBehaviour
 
         // adds button to list of invokers
         EventManager.AddButtonUnPressedInvokers(gameObject);
+
+        // tells door it is an open button to start if so
+        if (isReverseButton)
+        {
+            ButtonPressed();
+        }
     }
 
     // Update is called once per frame
@@ -59,20 +66,38 @@ public class BasicButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("gone");
-        if (other.gameObject.tag == "Cube01")
+        if (!isReverseButton)
         {
-            ButtonPressed();
+            if (other.gameObject.tag == "Cube01")
+            {
+                ButtonPressed();
+            }
+            else if (other.gameObject.tag == "Player")
+            {
+                ButtonPressed();
+                Debug.Log("player opening");
+            }
+            else if (other.gameObject.tag == "SecondState")
+            {
+                ButtonPressed();
+                secondTouchedMe = true;
+            }
         }
-        else if (other.gameObject.tag == "Player")
+        else
         {
-            ButtonPressed();
-            Debug.Log("player opening");
-        } 
-        else if (other.gameObject.tag == "SecondState")
-        {
-            ButtonPressed();
-            secondTouchedMe = true;
+            if (other.gameObject.tag == "Cube01")
+            {
+                ButtonUnPressed();
+            }
+            else if (other.gameObject.tag == "Player")
+            {
+                ButtonUnPressed();
+            }
+            else if (other.gameObject.tag == "SecondState")
+            {
+                ButtonUnPressed();
+                secondTouchedMe = true;
+            }
         }
 
     }
@@ -102,17 +127,35 @@ public class BasicButton : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Cube01" && isHoldButton)
+        if (!isReverseButton)
         {
-            ButtonUnPressed();
+            if (other.gameObject.tag == "Cube01" && isHoldButton)
+            {
+                ButtonUnPressed();
+            }
+            else if (other.gameObject.tag == "Player" && isHoldButton)
+            {
+                ButtonUnPressed();
+            }
+            else if (other.gameObject.tag == "SecondState" && isHoldButton)
+            {
+                ButtonUnPressed();
+            }
         }
-        else if (other.gameObject.tag == "Player" && isHoldButton)
+        else
         {
-            ButtonUnPressed();
-        }
-        else if (other.gameObject.tag == "SecondState" && isHoldButton)
-        {
-            ButtonUnPressed();
+            if (other.gameObject.tag == "Cube01" && isHoldButton)
+            {
+                ButtonPressed();
+            }
+            else if (other.gameObject.tag == "Player" && isHoldButton)
+            {
+                ButtonPressed();
+            }
+            else if (other.gameObject.tag == "SecondState" && isHoldButton)
+            {
+                ButtonPressed();
+            }
         }
     }
 

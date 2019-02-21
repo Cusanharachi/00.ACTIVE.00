@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemies\FollowSecond.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\BasicButton.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\Cube.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\DropDoor.cs" />
