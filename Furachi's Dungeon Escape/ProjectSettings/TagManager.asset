@@ -31,8 +31,8 @@ TagManager:
   - Both Buttons
   - Player Wall
   - Second Wall
-  - 
-  - 
+  - Puzzle Barriers
+  - SolidPieces
   - 
   - 
   - 
@@ -56,4 +56,10 @@ TagManager:
     locked: 0
   - name: AltMenu
     uniqueID: 3290579969
+    locked: 0
+  - name: UnderObject
+    uniqueID: 3480212073
+    locked: 0
+  - name: OverObject
+    uniqueID: 2942986061
     locked: 0

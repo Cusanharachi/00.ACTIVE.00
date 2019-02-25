@@ -39,9 +39,11 @@ public class MovementControl : MonoBehaviour
 
     // jumping movement
     bool isJumping;
-    float jumpingPower = 5.0f;
+    float jumpingPower = 10.0f;
     float jumpingaltered = 0;
-    float jumpingtime = 0.1f;
+    //float jumpingMaxHeight = 3.0f;
+    //float jumpHieight = 0.0f;
+    float jumpTime = 1.9f;
     float accumulatedTime;
 
     // Start is called before the first frame update
@@ -79,7 +81,7 @@ public class MovementControl : MonoBehaviour
             // shiftMovement = (Input.GetAxis("Horizontal") * shiftSpeed) * Time.deltaTime;
 
             // gets jumping power
-            if (Input.GetKeyDown(KeyCode.CapsLock) && !isJumping)
+            if (!isJumping)
             {
                 //if (accumulatedTime <= jumpingtime)
                 //{
@@ -92,14 +94,18 @@ public class MovementControl : MonoBehaviour
                 //    jumpingaltered = 0;
                 //    isJumping = true;
                 //}
-                isJumping = true;
-                jumpingaltered = jumpingPower;
-                accumulatedTime += Time.deltaTime;
+                if (Input.GetKeyDown(KeyCode.CapsLock))
+                {
+                    isJumping = true;
+                    jumpingaltered = jumpingPower;
+                }
             }
             else
             {
                 jumpingaltered = 0;
-                if (myBody.velocity.y == 0)
+                accumulatedTime += Time.deltaTime;
+
+                if (accumulatedTime >= jumpTime)
                 {
                     isJumping = false;
                     accumulatedTime = 0;

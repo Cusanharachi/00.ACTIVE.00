@@ -15,17 +15,17 @@ PrefabInstance:
     - target: {fileID: 128496643186648730, guid: eed37d65e45dbdb47a6697bf426e2929,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.9546967
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 128496643186648730, guid: eed37d65e45dbdb47a6697bf426e2929,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.3799095
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 128496643186648730, guid: eed37d65e45dbdb47a6697bf426e2929,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.20714
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 128496643186648730, guid: eed37d65e45dbdb47a6697bf426e2929,
         type: 3}
@@ -67,10 +67,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 128496643186648730, guid: eed37d65e45dbdb47a6697bf426e2929,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 128496643186648806, guid: eed37d65e45dbdb47a6697bf426e2929,
         type: 3}
       propertyPath: isHoldButton
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 128496643186648807, guid: eed37d65e45dbdb47a6697bf426e2929,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 128496643186648728, guid: eed37d65e45dbdb47a6697bf426e2929,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05585813b7360504a9affec28efc4847, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eed37d65e45dbdb47a6697bf426e2929, type: 3}
