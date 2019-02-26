@@ -22,6 +22,9 @@ public class FollowSecond : MonoBehaviour
 
     Rigidbody myBody;
 
+    // gets audio source for gameplay
+    AudioSource myAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,9 @@ public class FollowSecond : MonoBehaviour
 
         // helps with mvoement
         myBody = gameObject.GetComponent<Rigidbody>();
+
+        // gets audio components
+        myAudio = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -80,6 +86,15 @@ public class FollowSecond : MonoBehaviour
         else if (myBody.velocity.z < -speedLimit.z)
         {
             myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, -speedLimit.z);
+        }
+
+        if (myBody.velocity.x != 0 || myBody.velocity.z != 0 && !myAudio.isPlaying)
+        {
+            myAudio.Play();
+        }
+        else if (myBody.velocity.x == 0 && myBody.velocity.z == 0 && myAudio.isPlaying)
+        {
+            myAudio.Pause();
         }
     }
 

@@ -17,6 +17,10 @@ public class SecondPlayerScript : MonoBehaviour
     Enumeration enumeration = new Enumeration();
     SecondStateTransitionEvent secondStateTransitionEvent;
 
+    AudioSource myAudio;
+    public AudioClip born;
+    public AudioClip removed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,8 @@ public class SecondPlayerScript : MonoBehaviour
         // creates new event
         secondStateTransitionEvent = new SecondStateTransitionEvent();
         EventManager.AddSecondStateChangeInvokers(this.gameObject);
+
+        myAudio = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,11 +46,19 @@ public class SecondPlayerScript : MonoBehaviour
                 //Instantiate(secondState, this.transform);
                 GameObject.Instantiate(secondState, this.transform.position, this.transform.rotation);
 
+                // handles audio needs
+                myAudio.clip = born;
+                myAudio.Play();
+
                 secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.addState);
                 
             }
             else
             {
+                // handles audio needs
+                myAudio.clip = removed;
+                myAudio.Play();
+
                 twoBeings = false;
                 Destroy(GameObject.FindGameObjectWithTag("SecondState"));
                 secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);

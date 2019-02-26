@@ -7,12 +7,17 @@ public class CameraMovement : MonoBehaviour
 {
     // for camera following
     float angle = 90;
+    float angleAddedByPlayer = 0;
+    float angleAddedBySecond = 0;
     float playerAngle = 0;
     float secondAngle = 0;
     float correctedAngle;
     float distance = 7.0f;
     float hieght = 3.5f;
     float rotationAdjustmentSpeed = 10.0f;
+
+    // extra control components
+    bool cameraLocked = true;
 
     // target for camera
     Transform target;
@@ -40,11 +45,36 @@ public class CameraMovement : MonoBehaviour
     {
         FindNewTransfrom();
 
-        angle += (Input.GetAxis("Mouse X") * Time.timeScale);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (cameraLocked)
+            {
+                cameraLocked = false;
+            }
+            else
+            {
+                cameraLocked = true;
+            }
+        }
+        if (Input.GetMouseButtonDown(2))
+        {
+            angle = 90;
+        }
+        if (!cameraLocked)
+        {
+            angle += (Input.GetAxis("Mouse X") * Time.timeScale);
+        }
 
-        angle -= (Input.GetAxis("Horizontal") * Time.deltaTime * rotationAdjustmentSpeed);
-
-        correctedAngle = (Mathf.Deg2Rad * cameraMovementSpeed * angle);
+        if (targetIsPlayer)
+        {
+            angleAddedByPlayer -= (Input.GetAxis("Horizontal") * Time.deltaTime * rotationAdjustmentSpeed);
+            correctedAngle = (Mathf.Deg2Rad * cameraMovementSpeed * (angleAddedByPlayer + angle));
+        }
+        else
+        {
+            angleAddedBySecond -= (Input.GetAxis("Horizontal") * Time.deltaTime * rotationAdjustmentSpeed);
+            correctedAngle = (Mathf.Deg2Rad * cameraMovementSpeed * (angleAddedBySecond + angle));
+        }
 
         //mouseLocation = Screen.width / Input.mousePosition.x;
 
@@ -84,6 +114,7 @@ public class CameraMovement : MonoBehaviour
         {
             // saves angle for return
             playerAngle = angle;
+            angleAddedBySecond = angleAddedByPlayer;
 
             target = GameObject.FindGameObjectWithTag("SecondState").transform;
             targetIsPlayer = false;

@@ -39,11 +39,11 @@ public class MovementControl : MonoBehaviour
 
     // jumping movement
     bool isJumping;
-    float jumpingPower = 10.0f;
+    float jumpingPower = 8.0f;
     float jumpingaltered = 0;
     //float jumpingMaxHeight = 3.0f;
     //float jumpHieight = 0.0f;
-    float jumpTime = 1.9f;
+    float jumpTime = 1.5f;
     float accumulatedTime;
 
     // Start is called before the first frame update

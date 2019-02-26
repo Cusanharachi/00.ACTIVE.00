@@ -16,9 +16,14 @@ public class BasicButton : MonoBehaviour
 
     bool secondTouchedMe;
 
+    // for music
+    AudioSource myAudio;
+    bool PlayedAudio = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        myAudio = gameObject.GetComponent<AudioSource>();
         // handles extra problems
         secondTouchedMe = false;
 
@@ -105,6 +110,7 @@ public class BasicButton : MonoBehaviour
     public void ButtonPressed()
     {
         buttonPressedEvent.Invoke(gameObject);
+        myAudio.Play();
     }
 
     /// <summary>
@@ -174,5 +180,6 @@ public class BasicButton : MonoBehaviour
     public void ButtonUnPressed()
     {
         buttonUnPressedEvent.Invoke(this.gameObject);
+        myAudio.Play();
     }
 }

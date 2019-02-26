@@ -13,8 +13,11 @@ public class DropDoor : MonoBehaviour
 
     // Open conditions
     bool doorOpened; // for list analysis
-    float dropSpeed = 1.0f;
+    float dropSpeed = 0.2f;
+    float startingPosition;
     bool anyButtonsOn;
+    bool movingDown;
+    bool movingUp;
 
     // events
     ButtonPressedEvent buttonPressedEvent;
@@ -22,6 +25,9 @@ public class DropDoor : MonoBehaviour
 
     // helps with door opening/closing
     float doorHight = 5;
+
+    // holds audio object
+    AudioSource myAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -44,22 +50,59 @@ public class DropDoor : MonoBehaviour
 
         // for those using the or door
         anyButtonsOn = false;
+
+        // gets audio object
+        myAudio = gameObject.GetComponent<AudioSource>();
+
+        // gets current y for door movement
+        startingPosition = gameObject.transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (movingDown)
+        {
+            if (transform.position.y >= startingPosition - doorHight)
+            {
+                transform.Translate(0, -dropSpeed, 0);
+            }
+            else
+            {
+                movingDown = false;
+            }
+        }
+        if (movingUp)
+        {
+            if (transform.position.y <= startingPosition)
+            {
+                transform.Translate(0, dropSpeed, 0);
+            }
+            else
+            {
+                movingDown = false;
+            }
+        }
     }
 
     void OpenDoor()
     {
-        transform.Translate(0, -doorHight, 0, transform);
+        myAudio.Play();
+        if (movingUp)
+        {
+            movingUp = false;
+        }
+        movingDown = true;
     }
 
     void CloseDoor()
     {
-        transform.Translate(0, doorHight, 0, transform);
+        myAudio.Play();
+        if (movingDown)
+        {
+            movingDown = false;
+        }
+        movingUp = true;
     }
 
     /// <summary>
