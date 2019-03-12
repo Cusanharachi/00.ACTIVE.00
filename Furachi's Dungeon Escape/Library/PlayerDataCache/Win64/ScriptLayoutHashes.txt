@@ -1,12 +1,12 @@
 Win64
 PlayerPath?
-C:/Users/yunau/Desktop/Burns Project Plan And Demo Game/Furachi's Dungeon Escape.exe
+C:/Users/yunau/Desktop/fixedDungeonEscape/Furachi's Dungeon Escape.exe
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/SliceOfLife.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
-952070d6053ec8b5a4a368c183a9c09a Assembly-CSharp.dll:.SecondPlayerScript
+ae64a7d54247d99cafbf039ba5680979 Assembly-CSharp.dll:.SecondPlayerScript
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -87,7 +87,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-c40aa816bfa250b7a6b6f3be5cd3e257 Assembly-CSharp.dll:.BasicButton
+28a89b9dde288b57a006080f6fa098cf Assembly-CSharp.dll:.BasicButton
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8747051d8c53856e2def93af4f2a8b08 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -117,7 +117,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 9c8b68ebfe472f7953931e1a931ad89f Assembly-CSharp.dll:.ToControlsButton
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-a0e3a3b7ba5da71a2dc6f989b37e6d7a Assembly-CSharp.dll:.DropDoor
+1d55dd7533bdcd225986ed34cd1ab993 Assembly-CSharp.dll:.DropDoor
 56f2aaf9f813cdaf22c809529430cb16 Assembly-CSharp.dll:.FollowSecond
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
@@ -156,7 +156,7 @@ ae91c545dea6ac849dd81c4b660c68ca Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 69167579cf7fcbb2676fc1e675963dcd Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
-98c9b7499ca0375ae9690863aa8f024f Assembly-CSharp.dll:.MovementControl
+6928b083df65b7c4414db783dd637c9d Assembly-CSharp.dll:.MovementControl
 0077fc8e4fbae67f80e80ebd534de5a0 Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 f8b139fcde9fda6214245df246415cc7 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour
 0077fc8e4fbae67f80e80ebd534de5a0 Vuforia.UnityExtensions.dll:Vuforia.AnchorStageBehaviour
@@ -325,3 +325,11 @@ ae91c545dea6ac849dd81c4b660c68ca Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 69167579cf7fcbb2676fc1e675963dcd Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
+1e6bea8da9e5d84598afc96f438685c4 Assembly-CSharp.dll:.HealthManager
+4468c3e4f4fb8fd968cc0582f261dfc6 Assembly-CSharp.dll:.HealthModifer
+a263db3e68e5079b0b368033091eeb1a Assembly-CSharp.dll:.ImaginationModifier
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.RestartLevelButton
+f7f94b6490ee9aae6745a36670a95527 Assembly-CSharp.dll:.PlayerSpawnScript
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SecondPuzzlePiece
+a7f04252ad9e6f6920be75ab83648882 Assembly-CSharp.dll:.SequenceDoor
+45a67f0b6b29345b89214dfa5347af76 Assembly-CSharp.dll:.PlatformScript

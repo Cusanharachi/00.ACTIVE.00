@@ -49,6 +49,17 @@ public class EventManager : MonoBehaviour
 
     // objects that inform the state change of the second state
     static List<GameObject> secondStateChangeInvokers = new List<GameObject>();
+
+    // objects that change the health or imagination of the player
+    static List<GameObject> healthChangedInvokers = new List<GameObject>();
+
+    // objects that only change imagination of the second state
+    // NOTE: these are given the helath changed listeners but have their own invoker method
+    static List<GameObject> imaginationChangedInvokers = new List<GameObject>();
+
+    // objects that announce a players death appear here
+    // NOTE: imagination deaths come from these invokers (hopefuly just the health bar)
+    static List<GameObject> playerDeathInvokers = new List<GameObject>();
     #endregion
 
     // 
@@ -64,6 +75,13 @@ public class EventManager : MonoBehaviour
 
     // objects inquiring about the second state change
     static List<UnityAction<Enumeration.secondStateTransitions>> secondStateChangeListeners = new List<UnityAction<Enumeration.secondStateTransitions>>();
+
+    // objects listening for health or imagination change events
+    static List<UnityAction<Enumeration.playerState, float>> healthChangedListeners = new List<UnityAction<Enumeration.playerState, float>>();
+
+    // objects listening for player death events
+    static List<UnityAction<Enumeration.playerState>> playerDeathListeners = new List<UnityAction<Enumeration.playerState>>();
+
     #endregion
 
     // all invoker and listener pairing happens here
@@ -159,6 +177,85 @@ public class EventManager : MonoBehaviour
         foreach (UnityAction<Enumeration.secondStateTransitions> listener in secondStateChangeListeners)
         {
             invoker.GetComponent<SecondPlayerScript>().AddSecondStateChangeListener(listener);
+        }
+    }
+
+    /// <summary>
+    /// pairs all health/imagination change listeners to invokers
+    /// </summary>
+    public static void AddHealthChangedListeners(UnityAction<Enumeration.playerState, float> listener)
+    {
+        // adds listener to list and all invokers
+        healthChangedListeners.Add(listener);
+        foreach (GameObject invoker in healthChangedInvokers)
+        {
+            invoker.GetComponent<HealthModifer>().AddHealthChangedListener(listener);
+        }
+
+        // adds listeners to all imagination changed invokers
+        foreach (GameObject invoker in imaginationChangedInvokers)
+        {
+            invoker.GetComponent<ImaginationModifier>().AddHealthChangedListener(listener);
+        }
+    }
+
+    /// <sumary>
+    /// pairs all health changed invokers to every listener
+    /// </sumary>
+    public static void AddHealthChangedInvokers(GameObject invoker)
+    {
+        // adds invoker to list and to all listeners
+        healthChangedInvokers.Add(invoker);
+        foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
+        {
+            invoker.GetComponent<HealthModifer>().AddHealthChangedListener(listener);
+        }
+
+        // adds the imagination change invokers to the list of all listeners
+        foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
+        {
+            invoker.GetComponent<ImaginationModifier>().AddHealthChangedListener(listener);
+        }
+    }
+
+    /// <sumary>
+    /// pairs all imagination changed invokers to every listener for healt/imagination change events
+    /// </sumary>
+    public static void AddImaginationChangedInvokers(GameObject invoker)
+    {
+        // adds invoker to list and to all listeners
+        imaginationChangedInvokers.Add(invoker);
+
+        // adds the imagination change invokers to the list of all listeners
+        foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
+        {
+            invoker.GetComponent<ImaginationModifier>().AddHealthChangedListener(listener);
+        }
+    }
+
+    /// <summary>
+    /// pairs all playerDeath listeners to invokers
+    /// </summary>
+    public static void AddPlayerDeathListeners(UnityAction<Enumeration.playerState> listener)
+    {
+        // adds listener to list and all invokers
+        playerDeathListeners.Add(listener);
+        foreach (GameObject invoker in playerDeathInvokers)
+        {
+            invoker.GetComponent<HealthManager>().AddPlayerDeathListener(listener);
+        }
+    }
+
+    /// <sumary>
+    /// pairs all player death invokers to every listener
+    /// </sumary>
+    public static void AddPlayerDeathInvokers(GameObject invoker)
+    {
+        // adds invoker to list and to all listeners
+        playerDeathInvokers.Add(invoker);
+        foreach (UnityAction<Enumeration.playerState> listener in playerDeathListeners)
+        {
+            invoker.GetComponent<HealthManager>().AddPlayerDeathListener(listener);
         }
     }
     #endregion

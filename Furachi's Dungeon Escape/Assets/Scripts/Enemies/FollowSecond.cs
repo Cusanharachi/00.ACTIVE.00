@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FollowSecond : MonoBehaviour
 {
@@ -132,7 +133,7 @@ public class FollowSecond : MonoBehaviour
         //toVectorAngle.y = transform.position.y;
         //toVectorAngle.z += transform.position.z;
 
-        //myBody.MovePosition(toVectorAngle);
+        //myBody.Moveposition(toVectorAngle);
         
     }
 }

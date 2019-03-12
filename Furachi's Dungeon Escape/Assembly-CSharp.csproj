@@ -62,19 +62,28 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Enemies\FollowSecond.cs" />
+    <Compile Include="Assets\Scripts\Enemies\HealthModifer.cs" />
+    <Compile Include="Assets\Scripts\Enemies\ImaginationModifier.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\BasicButton.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\Cube.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\DropDoor.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\HoldButton.cs" />
+    <Compile Include="Assets\Scripts\EnviornmentScripts\PlatformScript.cs" />
+    <Compile Include="Assets\Scripts\EnviornmentScripts\PlayerSpawnScript.cs" />
+    <Compile Include="Assets\Scripts\EnviornmentScripts\SequenceDoor.cs" />
     <Compile Include="Assets\Scripts\Events\ButtonPressedEvent.cs" />
     <Compile Include="Assets\Scripts\Events\ButtonUnPressedEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\HealthChangedEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\PlayerDeathEvent.cs" />
     <Compile Include="Assets\Scripts\Events\SecondStateCreationEvent.cs" />
     <Compile Include="Assets\Scripts\Events\SecondStateTransitionEvent.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\HealthManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Misc_\Enumeration.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\MovementControl.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\SecondPlayerScript.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\SecondPuzzlePiece.cs" />
     <Compile Include="Assets\Scripts\Tools\Singleton.cs" />
     <Compile Include="Assets\Scripts\Tools\Timer.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\BackToMenu.cs" />
@@ -82,6 +91,7 @@
     <Compile Include="Assets\Scripts\User Interface Scripts\MenuButtons.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\PlayButton.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\RestartLevelButton.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\ToControlsButton.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\ToMainMenuButton.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">

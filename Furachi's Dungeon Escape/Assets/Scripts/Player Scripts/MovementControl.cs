@@ -6,6 +6,7 @@ public class MovementControl : MonoBehaviour
 {
     // maintains second state options
     public bool amISecond;
+    public float ExtraForce = 1;
     bool amIMovable;
 
     // body for motion
@@ -43,12 +44,21 @@ public class MovementControl : MonoBehaviour
     float jumpingaltered = 0;
     //float jumpingMaxHeight = 3.0f;
     //float jumpHieight = 0.0f;
-    float jumpTime = 1.5f;
+    //float jumpTime = 1.5f;
     float accumulatedTime;
+
+    // player puzzle piece variables
+    bool placedPiece;
+    public GameObject puzzlePiece;
+    GameObject instantiatedPiece;
 
     // Start is called before the first frame update
     void Start()
     {
+        // sets place peace
+        placedPiece = false;
+
+        // gets rigid body
         myBody = gameObject.GetComponent<Rigidbody>();
 
         // sets early
@@ -76,41 +86,51 @@ public class MovementControl : MonoBehaviour
         if (amIMovable)
         {
             // updates axis data
-            forwardBackward = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime;
+            forwardBackward = Input.GetAxis("Vertical") * ExtraForce * movementSpeed * Time.deltaTime;
             sideToSide = (Input.GetAxis("Horizontal") * rotationSPeed) * Time.deltaTime;
             // shiftMovement = (Input.GetAxis("Horizontal") * shiftSpeed) * Time.deltaTime;
 
-            // gets jumping power
-            if (!isJumping)
+            if (!isJumping && Input.GetKeyDown(KeyCode.Space))
             {
-                //if (accumulatedTime <= jumpingtime)
-                //{
-                //    // jumpingaltered = jumpingPower - accumulatedTime;
-                //    jumpingaltered = jumpingPower;
-                //    accumulatedTime += Time.deltaTime;
-                //}
-                //else
-                //{
-                //    jumpingaltered = 0;
-                //    isJumping = true;
-                //}
-                if (Input.GetKeyDown(KeyCode.CapsLock))
-                {
-                    isJumping = true;
-                    jumpingaltered = jumpingPower;
-                }
+                isJumping = true;
+                jumpingaltered = jumpingPower * ExtraForce;
             }
             else
             {
                 jumpingaltered = 0;
-                accumulatedTime += Time.deltaTime;
-
-                if (accumulatedTime >= jumpTime)
-                {
-                    isJumping = false;
-                    accumulatedTime = 0;
-                }
             }
+
+            // gets jumping power
+            //if (!isJumping)
+            //{
+            //    //if (accumulatedTime <= jumpingtime)
+            //    //{
+            //    //    // jumpingaltered = jumpingPower - accumulatedTime;
+            //    //    jumpingaltered = jumpingPower;
+            //    //    accumulatedTime += Time.deltaTime;
+            //    //}
+            //    //else
+            //    //{
+            //    //    jumpingaltered = 0;
+            //    //    isJumping = true;
+            //    //}
+            //    if (Input.GetKeyDown(KeyCode.CapsLock))
+            //    {
+            //        isJumping = true;
+            //        jumpingaltered = jumpingPower;
+            //    }
+            //}
+            //else
+            //{
+            //    jumpingaltered = 0;
+            //    accumulatedTime += Time.deltaTime;
+
+            //    if (accumulatedTime >= jumpTime)
+            //    {
+            //        isJumping = false;
+            //        accumulatedTime = 0;
+            //    }
+            //}
 
             directionalAxis = new Vector3(shiftMovement, jumpingaltered, forwardBackward);
             // rotationalAxis = new Vector3(0, sideToSide, 0);
@@ -123,6 +143,18 @@ public class MovementControl : MonoBehaviour
 
             // adds force to move forward
             myBody.AddRelativeForce(directionalAxis, ForceMode.Impulse);
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.timeScale != 0 && !placedPiece && !amISecond)
+            {
+                instantiatedPiece = Instantiate(puzzlePiece, transform.position + puzzlePiece.transform.position, puzzlePiece.transform.rotation);
+                placedPiece = true;
+                Debug.Log("appeared");
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftShift) && Time.timeScale != 0 && placedPiece && !amISecond)
+            {
+                Destroy(instantiatedPiece);
+                placedPiece = false;
+            }
 
         }
         // both statements ensure speed limit is maintained.
@@ -184,10 +216,32 @@ public class MovementControl : MonoBehaviour
     {
         if (other.gameObject.tag == "Cube01")
         {
-            //Debug.Log("we touched");
-            puzzlepiece = true;
-            active = true;
-            currentpuzzlepiece = other.gameObject;
+            if (!holding)
+            {
+                //Debug.Log("we touched");
+                puzzlepiece = true;
+                active = true;
+                currentpuzzlepiece = other.gameObject;
+            }
+        }
+
+        if (other.gameObject.tag == "SpecialCube")
+        {
+            if (!holding)
+            {
+                //Debug.Log("we touched");
+                puzzlepiece = true;
+                active = true;
+                currentpuzzlepiece = other.gameObject;
+            }
+        }
+
+        if (other.gameObject.tag == "JumpAbleCollider")
+        {
+            if (isJumping)
+            {
+                isJumping = false;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -202,6 +256,11 @@ public class MovementControl : MonoBehaviour
                 active = false;
             }
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        
     }
 
     void ChangeMovabillity(Enumeration.secondStateTransitions enumeration)
@@ -224,6 +283,18 @@ public class MovementControl : MonoBehaviour
             {
                 amIMovable = true;
             }
+        }
+    }
+
+    /// <summary>
+    /// looks to see if a puzzle piece was placed, uses the death of second state for check
+    /// </summary>
+    /// <param name="state"></param>
+    void CheckPlacedPiece(Enumeration.playerState state)
+    {
+        if (state == Enumeration.playerState.secondState && placedPiece)
+        {
+            placedPiece = false;
         }
     }
 }

@@ -9,18 +9,24 @@ public class PauseMenu : MonoBehaviour
     // handles open or closed and holds pause menu
     GameObject myPauseMenu;
     bool isOpen;
+    bool openable;
 
     // Start is called before the first frame update
     void Start()
     {
         // pause menu can't have been opened yet
         isOpen = false;
+
+        // pause menu is restricted by something
+        openable = true;
+
+        EventManager.AddPlayerDeathListeners(PlayerDied);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (openable && Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isOpen)
             {
@@ -40,6 +46,18 @@ public class PauseMenu : MonoBehaviour
                 // starts up time again
                 Time.timeScale = 1;
             }
+        }
+    }
+
+    /// <summary>
+    /// changes variables if player dies
+    /// </summary>
+    /// <param name="stateDeath"> this is the state that died on the event call</param>
+    void PlayerDied(Enumeration.playerState stateDeath)
+    {
+        if (stateDeath == Enumeration.playerState.playerState)
+        {
+            openable = false;
         }
     }
 }

@@ -6,12 +6,12 @@ using UnityEngine.Events;
 public class CameraMovement : MonoBehaviour
 {
     // for camera following
-    float angle = 90;
+    float angle = 0;
     float angleAddedByPlayer = 0;
     float angleAddedBySecond = 0;
     float playerAngle = 0;
     float secondAngle = 0;
-    float correctedAngle;
+    float correctedAngle = 90;
     float distance = 7.0f;
     float hieght = 3.5f;
     float rotationAdjustmentSpeed = 10.0f;
@@ -58,7 +58,7 @@ public class CameraMovement : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(2))
         {
-            angle = 90;
+            angle = 0;
         }
         if (!cameraLocked)
         {
@@ -76,7 +76,7 @@ public class CameraMovement : MonoBehaviour
             correctedAngle = (Mathf.Deg2Rad * cameraMovementSpeed * (angleAddedBySecond + angle));
         }
 
-        //mouseLocation = Screen.width / Input.mousePosition.x;
+        //mouseLocation = Screen.width / Input.mouseposition.x;
 
         //angle = mouseLocation;
     }
@@ -133,16 +133,16 @@ public class CameraMovement : MonoBehaviour
             {
                 // saves angle for return
                 playerAngle = angle;
-                angle = secondAngle;
                 target = GameObject.FindGameObjectWithTag("SecondState").transform;
                 targetIsPlayer = false;
+                angle = secondAngle;
             }
             else
             {
                 secondAngle = angle;
-                angle = playerAngle;
                 target = GameObject.FindGameObjectWithTag("Player").transform;
                 targetIsPlayer = true;
+                angle = playerAngle;
             }
         }
         //if (enumeration == Enumeration.secondStateTransitions.removeState)

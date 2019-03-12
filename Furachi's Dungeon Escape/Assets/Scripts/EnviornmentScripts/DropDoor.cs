@@ -7,6 +7,10 @@ public class DropDoor : MonoBehaviour
 {
     // for door types
     public bool orDoor;
+
+    // special doors
+    public float specialDropDistance = 0;
+
     // Open requirements
     public List<GameObject> myActivators;
     private  List<bool> allButtonsReady;
@@ -14,7 +18,7 @@ public class DropDoor : MonoBehaviour
     // Open conditions
     bool doorOpened; // for list analysis
     float dropSpeed = 0.2f;
-    float startingPosition;
+    float startingposition;
     bool anyButtonsOn;
     bool movingDown;
     bool movingUp;
@@ -55,7 +59,11 @@ public class DropDoor : MonoBehaviour
         myAudio = gameObject.GetComponent<AudioSource>();
 
         // gets current y for door movement
-        startingPosition = gameObject.transform.position.y;
+        startingposition = transform.localPosition.y;
+
+        // updates door hight for special doors
+        doorHight += specialDropDistance;
+        dropSpeed += specialDropDistance / 2;
     }
 
     // Update is called once per frame
@@ -63,7 +71,7 @@ public class DropDoor : MonoBehaviour
     {
         if (movingDown)
         {
-            if (transform.position.y >= startingPosition - doorHight)
+            if (transform.localPosition.y >= startingposition - doorHight)
             {
                 transform.Translate(0, -dropSpeed, 0);
             }
@@ -74,7 +82,7 @@ public class DropDoor : MonoBehaviour
         }
         if (movingUp)
         {
-            if (transform.position.y <= startingPosition)
+            if (transform.localPosition.y <= startingposition)
             {
                 transform.Translate(0, dropSpeed, 0);
             }

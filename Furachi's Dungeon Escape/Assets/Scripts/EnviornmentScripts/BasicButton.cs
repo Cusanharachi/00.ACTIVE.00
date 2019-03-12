@@ -9,6 +9,7 @@ public class BasicButton : MonoBehaviour
     [SerializeField]
     public bool isHoldButton;
     public bool isReverseButton;
+    public bool isSpecialButton = false;
 
     // Event variables
     ButtonPressedEvent buttonPressedEvent;
@@ -19,6 +20,16 @@ public class BasicButton : MonoBehaviour
     // for music
     AudioSource myAudio;
     bool PlayedAudio = false;
+
+    // handles button collisions
+    bool cubeTouching;
+    bool playerTouching;
+    bool secondTouching;
+    //bool specialTouching;
+
+    // handles extra event calls
+    bool pressed;
+    bool unPressed;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +50,16 @@ public class BasicButton : MonoBehaviour
         // adds button to list of invokers
         EventManager.AddButtonUnPressedInvokers(gameObject);
 
+        // makes new list
+        cubeTouching = false;
+        playerTouching = false;
+        secondTouching = false;
+
+        // makes sure we aren't spamming
+        pressed = true;
+        unPressed = false;
+
+
         // tells door it is an open button to start if so
         if (isReverseButton)
         {
@@ -49,12 +70,43 @@ public class BasicButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (secondTouchedMe && isHoldButton)
+        if (!isSpecialButton)
         {
-            if (GameObject.FindGameObjectWithTag("SecondState") == null)
+            if (isHoldButton && secondTouching)
+            {
+                if (GameObject.FindGameObjectWithTag("SecondState") == null)
+                {
+                    secondTouching = false;
+                }
+            }
+        }
+        else
+        {
+            if (isHoldButton && cubeTouching)
+            {
+                if (GameObject.FindGameObjectWithTag("SpecialCube") == null)
+                {
+                    cubeTouching = false;
+                }
+            }
+        }
+
+        if (secondTouching || playerTouching || cubeTouching)
+        {
+            if (unPressed)
+            {
+                ButtonPressed();
+                unPressed = false;
+                pressed = true;
+            }
+        }
+        else if (!PlayedAudio)
+        {
+            if (pressed)
             {
                 ButtonUnPressed();
-                secondTouchedMe = false;
+                unPressed = true;
+                pressed = false;
             }
         }
     }
@@ -69,42 +121,72 @@ public class BasicButton : MonoBehaviour
     //    }
     //}
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (!isReverseButton)
+    //    {
+    //        if (other.gameObject.tag == "Cube01")
+    //        {
+    //            ButtonPressed();
+    //        }
+    //        else if (other.gameObject.tag == "Player")
+    //        {
+    //            ButtonPressed();
+    //            Debug.Log("player opening");
+    //        }
+    //        else if (other.gameObject.tag == "SecondState")
+    //        {
+    //            ButtonPressed();
+    //            secondTouchedMe = true;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (other.gameObject.tag == "Cube01")
+    //        {
+    //            ButtonUnPressed();
+    //        }
+    //        else if (other.gameObject.tag == "Player")
+    //        {
+    //            ButtonUnPressed();
+    //        }
+    //        else if (other.gameObject.tag == "SecondState")
+    //        {
+    //            ButtonUnPressed();
+    //            secondTouchedMe = true;
+    //        }
+    //    }
+
+    //}
+
+    /// <summary>
+    /// this method in this class is intended to make sure the cube works if anyone is touching
+    /// </summary>
+    /// <param name="other"> collision object </param>
+    private void OnTriggerStay(Collider other)
     {
-        if (!isReverseButton)
+        if (!isSpecialButton)
         {
-            if (other.gameObject.tag == "Cube01")
+            if (other.gameObject.tag == "Cube01" & !cubeTouching)
             {
-                ButtonPressed();
+                cubeTouching = true;
             }
-            else if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "SecondState" && !secondTouching)
             {
-                ButtonPressed();
-                Debug.Log("player opening");
+                secondTouching = true;
             }
-            else if (other.gameObject.tag == "SecondState")
+            if (other.gameObject.tag == "Player" && !playerTouching)
             {
-                ButtonPressed();
-                secondTouchedMe = true;
+                playerTouching = true;
             }
         }
         else
         {
-            if (other.gameObject.tag == "Cube01")
+            if (!cubeTouching && other.gameObject.tag == "SpecialCube")
             {
-                ButtonUnPressed();
-            }
-            else if (other.gameObject.tag == "Player")
-            {
-                ButtonUnPressed();
-            }
-            else if (other.gameObject.tag == "SecondState")
-            {
-                ButtonUnPressed();
-                secondTouchedMe = true;
+                cubeTouching = true;
             }
         }
-
     }
 
     public void ButtonPressed()
@@ -133,36 +215,46 @@ public class BasicButton : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!isReverseButton)
+        //if (!isReverseButton)
+        //{
+        if (!isSpecialButton)
         {
             if (other.gameObject.tag == "Cube01" && isHoldButton)
             {
-                ButtonUnPressed();
+                cubeTouching = false;
             }
-            else if (other.gameObject.tag == "Player" && isHoldButton)
+            if (other.gameObject.tag == "Player" && isHoldButton)
             {
-                ButtonUnPressed();
+                playerTouching = false;
             }
-            else if (other.gameObject.tag == "SecondState" && isHoldButton)
+            if (other.gameObject.tag == "SecondState" && isHoldButton)
             {
-                ButtonUnPressed();
+                secondTouching = false;
             }
         }
         else
         {
-            if (other.gameObject.tag == "Cube01" && isHoldButton)
+            if (isHoldButton && other.gameObject.tag == "SpecialCube")
             {
-                ButtonPressed();
-            }
-            else if (other.gameObject.tag == "Player" && isHoldButton)
-            {
-                ButtonPressed();
-            }
-            else if (other.gameObject.tag == "SecondState" && isHoldButton)
-            {
-                ButtonPressed();
+                cubeTouching = false;
             }
         }
+        //}
+        //else
+        //{
+        //    if (other.gameObject.tag == "Cube01" && isHoldButton)
+        //    {
+        //        ButtonPressed();
+        //    }
+        //    else if (other.gameObject.tag == "Player" && isHoldButton)
+        //    {
+        //        ButtonPressed();
+        //    }
+        //    else if (other.gameObject.tag == "SecondState" && isHoldButton)
+        //    {
+        //        ButtonPressed();
+        //    }
+        //}
     }
 
     //void OnCollisionStay(Collision collisionInfo)

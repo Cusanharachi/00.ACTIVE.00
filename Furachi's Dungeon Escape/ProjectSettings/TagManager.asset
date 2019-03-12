@@ -14,6 +14,11 @@ TagManager:
   - MainMenuInterface
   - PlayerWall
   - SecondWall
+  - JumpAbleCollider
+  - PlayerHealthBar
+  - ImaginationBar
+  - SpecialCube
+  - HealthBars
   layers:
   - Default
   - TransparentFX
@@ -33,7 +38,7 @@ TagManager:
   - Second Wall
   - Puzzle Barriers
   - SolidPieces
-  - 
+  - DeathPit
   - 
   - 
   - 

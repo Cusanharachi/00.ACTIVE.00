@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SecondPlayerScript : MonoBehaviour
 {
-        // secondstate
+    // death menu
+    public GameObject deathMenu;
+
+    // secondstate
     [SerializeField]
     public GameObject secondState;
 
@@ -30,6 +34,9 @@ public class SecondPlayerScript : MonoBehaviour
         // creates new event
         secondStateTransitionEvent = new SecondStateTransitionEvent();
         EventManager.AddSecondStateChangeInvokers(this.gameObject);
+
+        // sets up other events
+        EventManager.AddPlayerDeathListeners(Die);
 
         myAudio = gameObject.GetComponent<AudioSource>();
     }
@@ -64,7 +71,7 @@ public class SecondPlayerScript : MonoBehaviour
                 secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);
             }
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && GameObject.FindGameObjectWithTag("SecondState") != null && Time.timeScale != 0)
+        else if (Input.GetKeyUp(KeyCode.Tab) && GameObject.FindGameObjectWithTag("SecondState") != null && Time.timeScale != 0)
         {
             secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.switchView);
         }
@@ -73,5 +80,28 @@ public class SecondPlayerScript : MonoBehaviour
     public void AddSecondStateChangeListener(UnityAction<Enumeration.secondStateTransitions> listener)
     {
         secondStateTransitionEvent.AddListener(listener);
+    }
+
+    /// <summary>
+    /// kills the player or second state if their death is triggered
+    /// by the event system
+    /// </summary>
+    /// <param name="whoDies"></param>
+    void Die(Enumeration.playerState whoDies)
+    {
+        if (whoDies == Enumeration.playerState.playerState)
+        {
+            Instantiate(deathMenu);
+        }
+        else
+        {
+            // handles audio needs
+            myAudio.clip = removed;
+            myAudio.Play();
+
+            twoBeings = false;
+            Destroy(GameObject.FindGameObjectWithTag("SecondState"));
+            secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);
+        }
     }
 }
