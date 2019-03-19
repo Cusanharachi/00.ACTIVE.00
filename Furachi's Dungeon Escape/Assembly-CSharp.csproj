@@ -82,6 +82,10 @@
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Misc_\Enumeration.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\MovementControl.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\PlayerGrabScript.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\SecondGrabScript.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\SecondMovement.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\SecondPlayerScript.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\SecondPuzzlePiece.cs" />
     <Compile Include="Assets\Scripts\Tools\Singleton.cs" />

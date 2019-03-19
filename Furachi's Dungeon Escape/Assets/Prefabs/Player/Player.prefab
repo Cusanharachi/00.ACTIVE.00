@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 9149359092794092602}
   - component: {fileID: 9149359092794092601}
   - component: {fileID: 9149359092794092600}
-  - component: {fileID: 9149359092794092605}
+  - component: {fileID: 269971958492986437}
+  - component: {fileID: 4499995747895912973}
   - component: {fileID: 61020907871663841}
   - component: {fileID: 4826346942400365353}
   m_Layer: 9
@@ -113,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &9149359092794092605
+--- !u!114 &269971958492986437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,11 +123,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 9149359092794092599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da77eb5da5d31c45a70c6a2b4560a4b, type: 3}
+  m_Script: {fileID: 11500000, guid: d4b2c9b735e8efc4ca4dec8d9230912d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amISecond: 0
   ExtraForce: 1
+--- !u!114 &4499995747895912973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149359092794092599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06454e6cfa2d73b42b14636d2121f36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   puzzlePiece: {fileID: 1167083063370035903, guid: 19e6d11b40820d44582238afc97c6f77,
     type: 3}
 --- !u!114 &61020907871663841

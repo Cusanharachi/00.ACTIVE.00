@@ -41,14 +41,8 @@ public class BasicButton : MonoBehaviour
         // creates new event
         buttonPressedEvent = new ButtonPressedEvent();
 
-        // adds button to list of invokers
-        EventManager.AddButtonPressedInvokers(gameObject);
-
         // creates new event
         buttonUnPressedEvent = new ButtonUnPressedEvent();
-
-        // adds button to list of invokers
-        EventManager.AddButtonUnPressedInvokers(gameObject);
 
         // makes new list
         cubeTouching = false;
@@ -65,6 +59,12 @@ public class BasicButton : MonoBehaviour
         {
             ButtonPressed();
         }
+
+        // adds button to list of invokers
+        EventManager.AddButtonUnPressedInvokers(gameObject);
+
+        // adds button to list of invokers
+        EventManager.AddButtonPressedInvokers(gameObject);
     }
 
     // Update is called once per frame
@@ -95,18 +95,18 @@ public class BasicButton : MonoBehaviour
         {
             if (unPressed)
             {
-                ButtonPressed();
                 unPressed = false;
                 pressed = true;
+                ButtonPressed();
             }
         }
         else if (!PlayedAudio)
         {
             if (pressed)
             {
-                ButtonUnPressed();
                 unPressed = true;
                 pressed = false;
+                ButtonUnPressed();
             }
         }
     }
@@ -191,8 +191,8 @@ public class BasicButton : MonoBehaviour
 
     public void ButtonPressed()
     {
-        buttonPressedEvent.Invoke(gameObject);
         myAudio.Play();
+        buttonPressedEvent.Invoke(gameObject);
     }
 
     /// <summary>
@@ -271,7 +271,7 @@ public class BasicButton : MonoBehaviour
 
     public void ButtonUnPressed()
     {
-        buttonUnPressedEvent.Invoke(this.gameObject);
         myAudio.Play();
+        buttonUnPressedEvent.Invoke(this.gameObject);
     }
 }

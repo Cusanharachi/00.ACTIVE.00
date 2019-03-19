@@ -20,6 +20,7 @@ public class FollowSecond : MonoBehaviour
 
     // handles player existence
     bool secondStateExists;
+    bool playerFound;
 
     Rigidbody myBody;
 
@@ -29,13 +30,19 @@ public class FollowSecond : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerFound = false;
         if (followSecond)
         {
             EventManager.AddSecondStateChangeListeners(CheckForTarget);
+            EventManager.AddPlayerDeathListeners(CheckForRemoveTarget);
         }
         else
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                target = GameObject.FindGameObjectWithTag("Player").transform;
+                playerFound = true;
+            }
         }
 
         // makes sure it starts imobile
@@ -51,6 +58,12 @@ public class FollowSecond : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!playerFound && GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            playerFound = true;
+        }
+
         if (secondStateExists)
         {
             distance = Vector3.Distance(target.position , transform.position);
@@ -95,7 +108,7 @@ public class FollowSecond : MonoBehaviour
         }
         else if (myBody.velocity.x == 0 && myBody.velocity.z == 0 && myAudio.isPlaying)
         {
-            myAudio.Pause();
+            //myAudio.Pause();
         }
     }
 
@@ -112,9 +125,19 @@ public class FollowSecond : MonoBehaviour
 
                 case Enumeration.secondStateTransitions.removeState:
                     secondStateExists = false;
+                    target = null;
                     break;
 
             }
+        }
+    }
+
+    void CheckForRemoveTarget(Enumeration.playerState enumeration)
+    {
+        if (enumeration == Enumeration.playerState.secondState)
+        {
+            target = null;
+            secondStateExists = false;
         }
     }
 

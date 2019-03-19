@@ -157,6 +157,7 @@ public class MovementControl : MonoBehaviour
             }
 
         }
+
         // both statements ensure speed limit is maintained.
         if (myBody.velocity.x > speedLimit.x)
         {

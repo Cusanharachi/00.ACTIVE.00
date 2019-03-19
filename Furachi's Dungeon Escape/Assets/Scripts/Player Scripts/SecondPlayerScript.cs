@@ -12,13 +12,13 @@ public class SecondPlayerScript : MonoBehaviour
     // secondstate
     [SerializeField]
     public GameObject secondState;
+    private GameObject mySecondState;
 
     // second state active
     bool twoBeings;
     bool secondExists;
 
     // events for state changes and assiting stuff
-    Enumeration enumeration = new Enumeration();
     SecondStateTransitionEvent secondStateTransitionEvent;
 
     AudioSource myAudio;
@@ -28,17 +28,19 @@ public class SecondPlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // makes empty second state
+        mySecondState = null;
         twoBeings = false;
         secondExists = false;
 
         // creates new event
         secondStateTransitionEvent = new SecondStateTransitionEvent();
-        EventManager.AddSecondStateChangeInvokers(this.gameObject);
+
+        myAudio = gameObject.GetComponent<AudioSource>();
 
         // sets up other events
         EventManager.AddPlayerDeathListeners(Die);
-
-        myAudio = gameObject.GetComponent<AudioSource>();
+        EventManager.AddSecondStateChangeInvokers(this.gameObject);
     }
 
     // Update is called once per frame
@@ -48,17 +50,17 @@ public class SecondPlayerScript : MonoBehaviour
         {
             if (!twoBeings)
             {
+                // handles two beings at once code
                 twoBeings = true;
 
                 //Instantiate(secondState, this.transform);
-                GameObject.Instantiate(secondState, this.transform.position, this.transform.rotation);
+                mySecondState = GameObject.Instantiate(secondState, this.transform.position, this.transform.rotation);
 
                 // handles audio needs
                 myAudio.clip = born;
                 myAudio.Play();
 
                 secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.addState);
-                
             }
             else
             {
@@ -67,11 +69,14 @@ public class SecondPlayerScript : MonoBehaviour
                 myAudio.Play();
 
                 twoBeings = false;
-                Destroy(GameObject.FindGameObjectWithTag("SecondState"));
+                Destroy(mySecondState);
+                mySecondState = null;
+
+                // handles removal of a state
                 secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);
             }
         }
-        else if (Input.GetKeyUp(KeyCode.Tab) && GameObject.FindGameObjectWithTag("SecondState") != null && Time.timeScale != 0)
+        else if (Input.GetKeyUp(KeyCode.Tab) && mySecondState != null && Time.timeScale != 0)
         {
             secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.switchView);
         }
@@ -100,7 +105,8 @@ public class SecondPlayerScript : MonoBehaviour
             myAudio.Play();
 
             twoBeings = false;
-            Destroy(GameObject.FindGameObjectWithTag("SecondState"));
+            Destroy(mySecondState);
+            mySecondState = null;
             secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);
         }
     }

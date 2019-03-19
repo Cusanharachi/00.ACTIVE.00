@@ -242,6 +242,7 @@ public class EventManager : MonoBehaviour
         playerDeathListeners.Add(listener);
         foreach (GameObject invoker in playerDeathInvokers)
         {
+            HealthManager hm = invoker.GetComponent<HealthManager>();
             invoker.GetComponent<HealthManager>().AddPlayerDeathListener(listener);
         }
     }
@@ -257,6 +258,55 @@ public class EventManager : MonoBehaviour
         {
             invoker.GetComponent<HealthManager>().AddPlayerDeathListener(listener);
         }
+    }
+    #endregion
+
+    #region specialMethods
+    /// <summary>
+    /// clears all of the lists in the manager to start fresh
+    /// </summary>
+    public static void ClearManager()
+    {
+        // objects that invoke the button pressed method
+        buttonPressedInvokers.Clear();
+
+        // objects that invoke the button unpressed method
+        buttonUnPressedInvokers.Clear();
+
+        // objects that inform the state change of the second state
+        secondStateChangeInvokers.Clear();
+
+        // objects that change the health or imagination of the player
+        healthChangedInvokers.Clear();
+
+        // objects that only change imagination of the second state
+        // NOTE: these are given the helath changed listeners but have their own invoker method
+        imaginationChangedInvokers.Clear();
+
+        // objects that announce a players death appear here
+        // NOTE: imagination deaths come from these invokers (hopefuly just the health bar)
+        playerDeathInvokers.Clear();
+        #endregion
+
+        // 
+        #region ListenerLists
+        // lists of listeners
+        /*format*/ // static List<UnityAction?<>?> [NAME] = new List<T>();
+
+        // objects that Listen for the button pressed event
+        buttonPressedListeners.Clear();
+
+        // objects that listen for the button unpressed event
+        buttonUnPressedListeners.Clear();
+
+        // objects inquiring about the second state change
+        secondStateChangeListeners.Clear();
+
+        // objects listening for health or imagination change events
+        healthChangedListeners.Clear();
+
+        // objects listening for player death events
+        playerDeathListeners.Clear();
     }
     #endregion
 }

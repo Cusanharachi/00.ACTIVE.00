@@ -7,7 +7,8 @@ public class ToMainMenuButton : MonoBehaviour
 {
     public void OnClick()
     {
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        EventManager.ClearManager();
         Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }
