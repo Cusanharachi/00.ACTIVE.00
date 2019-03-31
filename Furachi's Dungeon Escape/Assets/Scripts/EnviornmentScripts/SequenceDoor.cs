@@ -8,6 +8,7 @@ public class SequenceDoor : MonoBehaviour
     // for door types
     public bool orDoor;
     public bool sequenceDoor = false;
+    public bool closeable = true;
     bool inSequence;
     int buttonToCheckUpTo;
     bool checkSequence;
@@ -139,12 +140,15 @@ public class SequenceDoor : MonoBehaviour
 
     void CloseDoor()
     {
-        myAudio.Play();
-        if (movingDown)
+        if (closeable && !doorOpened)
         {
-            movingDown = false;
+            myAudio.Play();
+            if (movingDown)
+            {
+                movingDown = false;
+            }
+            movingUp = true;
         }
-        movingUp = true;
     }
 
     /// <summary>
