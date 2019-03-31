@@ -61,9 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\Configuration\ConfigurationData.cs" />
+    <Compile Include="Assets\Scripts\Configuration\ConfigurationUtillities.cs" />
+    <Compile Include="Assets\Scripts\Configuration\SaveData.cs" />
     <Compile Include="Assets\Scripts\Enemies\FollowSecond.cs" />
     <Compile Include="Assets\Scripts\Enemies\HealthModifer.cs" />
     <Compile Include="Assets\Scripts\Enemies\ImaginationModifier.cs" />
+    <Compile Include="Assets\Scripts\EnviornmentScripts\AppearingBridge.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\BasicButton.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\Cube.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\DropDoor.cs" />
@@ -82,6 +86,7 @@
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Misc_\Enumeration.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\MovementControl.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\PlatforCreator.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerGrabScript.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\SecondGrabScript.cs" />
@@ -98,6 +103,7 @@
     <Compile Include="Assets\Scripts\User Interface Scripts\RestartLevelButton.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\ToControlsButton.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\ToMainMenuButton.cs" />
+    <Compile Include="Assets\Scripts\Utillities\GameInitializer.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>S:/00.ACTIVE.00/Furachi's Dungeon Escape/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

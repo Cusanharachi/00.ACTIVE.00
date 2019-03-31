@@ -262,11 +262,13 @@ public class EventManager : MonoBehaviour
     #endregion
 
     #region specialMethods
+
     /// <summary>
     /// clears all of the lists in the manager to start fresh
     /// </summary>
     public static void ClearManager()
     {
+        #region invokers
         // objects that invoke the button pressed method
         buttonPressedInvokers.Clear();
 
@@ -307,6 +309,13 @@ public class EventManager : MonoBehaviour
 
         // objects listening for player death events
         playerDeathListeners.Clear();
+
+        #endregion
+    }
+
+    void RemoveListener()
+    {
+
     }
     #endregion
 }

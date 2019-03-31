@@ -19,6 +19,7 @@ TagManager:
   - ImaginationBar
   - SpecialCube
   - HealthBars
+  - BridgeSpirit
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - Puzzle Barriers
   - SolidPieces
   - DeathPit
-  - 
+  - SpeacialPlayerPlatform
   - 
   - 
   - 

@@ -8,7 +8,7 @@ public class PlatformScript : MonoBehaviour
     public GameObject end;
 
     public float specialSpeed = 1;
-    float followSpeed = 0.1f;
+    float followSpeed = 5f;
 
     Rigidbody myBody;
 
@@ -18,7 +18,7 @@ public class PlatformScript : MonoBehaviour
 
     Vector3 targetposition;
 
-    Vector3 speedLimit = new Vector3(2f, 0, 2f);
+    Vector3 speedLimit = new Vector3(2f, 2f, 2f);
     Vector3 zero = new Vector3(0, 0, 0);
 
     // Start is called before the first frame update
@@ -37,7 +37,7 @@ public class PlatformScript : MonoBehaviour
     {
         if(toStart)
         {
-            if(Vector3.Distance(transform.position, start.transform.position) < 0.5)
+            if(Vector3.Distance(transform.position, start.transform.position) < 0.1)
             {
                 accumulatedTime += Time.deltaTime;
                 myBody.velocity = zero;
@@ -55,7 +55,7 @@ public class PlatformScript : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(transform.position, end.transform.position) < 0.5)
+            if (Vector3.Distance(transform.position, end.transform.position) < 0.1)
             {
                 accumulatedTime += Time.deltaTime;
                 myBody.velocity = zero;
@@ -89,6 +89,15 @@ public class PlatformScript : MonoBehaviour
         else if (myBody.velocity.z < -speedLimit.z)
         {
             myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, -speedLimit.z);
+        }
+
+        if (myBody.velocity.y > speedLimit.y)
+        {
+            myBody.velocity = new Vector3(myBody.velocity.x, speedLimit.y, myBody.velocity.z);
+        }
+        else if (myBody.velocity.y < -speedLimit.y)
+        {
+            myBody.velocity = new Vector3(myBody.velocity.x, -speedLimit.y, myBody.velocity.z);
         }
     }
 

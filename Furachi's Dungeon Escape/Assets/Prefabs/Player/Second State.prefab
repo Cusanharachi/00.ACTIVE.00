@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 8546514623628807102}
   - component: {fileID: 3417847497204687882}
   - component: {fileID: 7645640359519046595}
+  - component: {fileID: 8030713096297162963}
   m_Layer: 10
   m_Name: Second State
   m_TagString: SecondState
@@ -321,3 +322,17 @@ MonoBehaviour:
   specialCube: 0
   imaginationDamagerPerMeter: 10
   imaginationSafeDistance: 5
+--- !u!114 &8030713096297162963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447203191261057080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19148f6bb2f0bcf459fa4bf6502d099c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 5594351444893064541, guid: 27019f482ec30f64f94435a65ee80063,
+    type: 3}
