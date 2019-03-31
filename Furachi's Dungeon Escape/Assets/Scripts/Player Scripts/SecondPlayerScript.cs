@@ -25,6 +25,10 @@ public class SecondPlayerScript : MonoBehaviour
     public AudioClip born;
     public AudioClip removed;
 
+    // bools to prevent the second state form being removed
+    bool SecondStuck;
+    int StuckValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +36,10 @@ public class SecondPlayerScript : MonoBehaviour
         mySecondState = null;
         twoBeings = false;
         secondExists = false;
+
+        // value to change the number of affectors for the second state
+        StuckValue = 0;
+        SecondStuck = false;
 
         // creates new event
         secondStateTransitionEvent = new SecondStateTransitionEvent();
@@ -41,6 +49,7 @@ public class SecondPlayerScript : MonoBehaviour
         // sets up other events
         EventManager.AddPlayerDeathListeners(Die);
         EventManager.AddSecondStateChangeInvokers(this.gameObject);
+        EventManager.AddSecondStateStuckListeners(ChangeStuckValue);
     }
 
     // Update is called once per frame
@@ -64,16 +73,22 @@ public class SecondPlayerScript : MonoBehaviour
             }
             else
             {
-                // handles audio needs
-                myAudio.clip = removed;
-                myAudio.Play();
+                if (!SecondStuck)
+                {
+                    // handles audio needs
+                    myAudio.clip = removed;
+                    myAudio.Play();
 
-                twoBeings = false;
-                Destroy(mySecondState);
-                mySecondState = null;
+                    twoBeings = false;
+                    Destroy(mySecondState);
+                    mySecondState = null;
 
-                // handles removal of a state
-                secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);
+                    // resets stuck value
+                    StuckValue = 0;
+
+                    // handles removal of a state
+                    secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);
+                }
             }
         }
         else if (Input.GetKeyUp(KeyCode.Tab) && mySecondState != null && Time.timeScale != 0)
@@ -109,5 +124,31 @@ public class SecondPlayerScript : MonoBehaviour
             mySecondState = null;
             secondStateTransitionEvent.Invoke(Enumeration.secondStateTransitions.removeState);
         }
+    }
+
+    /// <summary>
+    /// the method that changes its stuck value to ensure
+    /// that there is soemthing (or isnt) something touching
+    /// the second state preventing their changing.
+    /// </summary>
+    /// <param name="valueToChange"></param>
+    void ChangeStuckValue(int valueToChange)
+    {
+        // adds the value
+        StuckValue += valueToChange;
+
+        Debug.Log(StuckValue);
+
+        // if there aren't any in contanct then we aren't stuck
+        if (StuckValue > 0)
+        {
+            SecondStuck = true;
+        }
+        else
+        {
+            SecondStuck = false;
+        }
+
+        Debug.Log(SecondStuck);
     }
 }

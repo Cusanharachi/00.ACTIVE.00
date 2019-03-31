@@ -60,6 +60,9 @@ public class EventManager : MonoBehaviour
     // objects that announce a players death appear here
     // NOTE: imagination deaths come from these invokers (hopefuly just the health bar)
     static List<GameObject> playerDeathInvokers = new List<GameObject>();
+
+    // objects that invoke the Second State Stuck event
+    static List<GameObject> secondStateStuckInokers = new List<GameObject>();
     #endregion
 
     // 
@@ -81,6 +84,9 @@ public class EventManager : MonoBehaviour
 
     // objects listening for player death events
     static List<UnityAction<Enumeration.playerState>> playerDeathListeners = new List<UnityAction<Enumeration.playerState>>();
+
+    // objects listening for second state stuck events
+    static List<UnityAction<int>> secondStateStuckListeners = new List<UnityAction<int>>();
 
     #endregion
 
@@ -259,6 +265,34 @@ public class EventManager : MonoBehaviour
             invoker.GetComponent<HealthManager>().AddPlayerDeathListener(listener);
         }
     }
+
+    /// <summary>
+    /// pairs all second stuck listeners to invokers
+    /// </summary>
+    /// <param name="listener"></param>
+    public static void AddSecondStateStuckListeners(UnityAction<int> listener)
+    {
+        // adds listener to list and to all Invokers
+        secondStateStuckListeners.Add(listener);
+        foreach (GameObject invoker in secondStateStuckInokers)
+        {
+            invoker.GetComponent<SecondStuckField>().AddSecondStateStuckListener(listener);
+        }
+    }
+
+    /// <summary>
+    /// pairs all second stuck invokers to every listener
+    /// </summary>
+    /// <param name="invoker"></param>
+    public static void AddSecondStateStuckInvokers(GameObject invoker)
+    {
+        // adds invoker to list and to all listeners
+        secondStateStuckInokers.Add(invoker);
+        foreach (UnityAction<int> listener in secondStateStuckListeners)
+        {
+            invoker.GetComponent<SecondStuckField>().AddSecondStateStuckListener(listener);
+        }
+    }
     #endregion
 
     #region specialMethods
@@ -288,6 +322,9 @@ public class EventManager : MonoBehaviour
         // objects that announce a players death appear here
         // NOTE: imagination deaths come from these invokers (hopefuly just the health bar)
         playerDeathInvokers.Clear();
+
+        // objects that signal second state stuck 
+        secondStateStuckInokers.Clear();
         #endregion
 
         // 
@@ -309,6 +346,9 @@ public class EventManager : MonoBehaviour
 
         // objects listening for player death events
         playerDeathListeners.Clear();
+
+        // objects that listen for the second stuck event
+        secondStateStuckListeners.Clear();
 
         #endregion
     }

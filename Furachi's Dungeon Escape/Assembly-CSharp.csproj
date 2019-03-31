@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\EnviornmentScripts\HoldButton.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\PlatformScript.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\PlayerSpawnScript.cs" />
+    <Compile Include="Assets\Scripts\EnviornmentScripts\SecondStuckField.cs" />
     <Compile Include="Assets\Scripts\EnviornmentScripts\SequenceDoor.cs" />
     <Compile Include="Assets\Scripts\Events\ButtonPressedEvent.cs" />
     <Compile Include="Assets\Scripts\Events\ButtonUnPressedEvent.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\Scripts\Events\PlayerDeathEvent.cs" />
     <Compile Include="Assets\Scripts\Events\SecondStateCreationEvent.cs" />
     <Compile Include="Assets\Scripts\Events\SecondStateTransitionEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\SecondStuckEvent.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Managers\HealthManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
