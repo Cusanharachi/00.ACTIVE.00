@@ -60,7 +60,7 @@ public class ConfigurationData : MonoBehaviour
         }
         catch(Exception e)
         {
-
+            print(e.Message);
         }
         finally
         {

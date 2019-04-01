@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     bool isJumping;
     private readonly float jumpingPower = 8.0f;
     float jumpingaltered;
-    float accumulatedTime;
 
     // body for motion
     Rigidbody myBody;
@@ -47,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
 
         // prepares jumping
         isJumping = false;
-        accumulatedTime = 0;
 
         // allows for movement changing
         EventManager.AddSecondStateChangeListeners(ChangeMovabillity);

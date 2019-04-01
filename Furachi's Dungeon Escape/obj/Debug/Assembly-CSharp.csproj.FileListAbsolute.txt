@@ -1132,3 +1132,7 @@ S:\00.ACTIVE.00\Furachi's Dungeon Escape\Temp\bin\Debug\UnityEngine.Networking.x
 S:\00.ACTIVE.00\Furachi's Dungeon Escape\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
 S:\00.ACTIVE.00\Furachi's Dungeon Escape\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 S:\00.ACTIVE.00\Furachi's Dungeon Escape\obj\Debug\Assembly-CSharp.csproj.CopyComplete
+S:\00.ACTIVE.00\Furachi's Dungeon Escape\Temp\bin\Debug\Unity.Postprocessing.Editor.dll
+S:\00.ACTIVE.00\Furachi's Dungeon Escape\Temp\bin\Debug\Unity.Postprocessing.Runtime.dll
+S:\00.ACTIVE.00\Furachi's Dungeon Escape\Temp\bin\Debug\Unity.Postprocessing.Editor.pdb
+S:\00.ACTIVE.00\Furachi's Dungeon Escape\Temp\bin\Debug\Unity.Postprocessing.Runtime.pdb

@@ -14,7 +14,7 @@ public class PlatformCollectableRequired : MonoBehaviour
     private List<bool> allButtonsReady;
 
     // special collectable values
-    bool anyButtonsOn;
+    //bool anyButtonsOn;
 
     // events
     ButtonPressedEvent buttonPressedEvent;
@@ -37,7 +37,7 @@ public class PlatformCollectableRequired : MonoBehaviour
         EventManager.AddButtonPressedListeners(AreMyButtonsPressed);
 
         // for those using the or door
-        anyButtonsOn = false;
+        //anyButtonsOn = false;
     }
 
     // Update is called once per frame

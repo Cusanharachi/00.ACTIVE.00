@@ -11,7 +11,7 @@ public class SecondGrabScript : MonoBehaviour
     bool puzzlepiece;
     bool holding;
     GameObject currentpuzzlepiece;
-    bool letGo;
+    //bool letGo;
     bool active;
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class SecondGrabScript : MonoBehaviour
 
         // sets early
         puzzlepiece = false;
-        letGo = true;
+        //letGo = true;
         active = false;
 
         // allows for movement changing

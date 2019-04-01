@@ -12,7 +12,7 @@ public class PlayerGrabScript : MonoBehaviour
     bool puzzlepiece;
     bool holding;
     GameObject currentpuzzlepiece;
-    bool letGo;
+    //bool letGo;
     bool active;
 
     // player puzzle piece variables (the imaginary one)
@@ -28,7 +28,7 @@ public class PlayerGrabScript : MonoBehaviour
 
         // sets early
         puzzlepiece = false;
-        letGo = true;
+        //letGo = true;
         active = false;
 
         // allows for movement changing

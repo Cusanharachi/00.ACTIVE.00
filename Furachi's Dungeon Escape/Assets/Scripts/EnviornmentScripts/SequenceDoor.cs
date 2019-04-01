@@ -24,7 +24,7 @@ public class SequenceDoor : MonoBehaviour
     bool doorOpened; // for list analysis
     float dropSpeed = 0.2f;
     float startingposition;
-    bool anyButtonsOn;
+    //bool anyButtonsOn;
     bool movingDown;
     bool movingUp;
 
@@ -58,7 +58,7 @@ public class SequenceDoor : MonoBehaviour
         EventManager.AddButtonUnPressedListeners(AnyUnPressedButtons);
 
         // for those using the or door
-        anyButtonsOn = false;
+        //anyButtonsOn = false;
 
         // sequence door vaiables
         inSequence = true;
@@ -249,13 +249,13 @@ public class SequenceDoor : MonoBehaviour
                 if (orDoor)
                 {
                     // resets for testing
-                    anyButtonsOn = false;
+                    //anyButtonsOn = false;
 
                     for (int j = 0; j < myActivators.Capacity; j++)
                     {
                         if (allButtonsReady[j])
                         {
-                            anyButtonsOn = true;
+                            //anyButtonsOn = true;
                             break;
                         }
                         else if (j == (myActivators.Capacity - 1))

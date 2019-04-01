@@ -15,8 +15,6 @@ public class BasicButton : MonoBehaviour
     ButtonPressedEvent buttonPressedEvent;
     ButtonUnPressedEvent buttonUnPressedEvent;
 
-    bool secondTouchedMe;
-
     // for music
     AudioSource myAudio;
     bool PlayedAudio = false;
@@ -36,7 +34,6 @@ public class BasicButton : MonoBehaviour
     {
         myAudio = gameObject.GetComponent<AudioSource>();
         // handles extra problems
-        secondTouchedMe = false;
 
         // creates new event
         buttonPressedEvent = new ButtonPressedEvent();

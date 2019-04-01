@@ -6,7 +6,7 @@ public class PlayerSpawnScript : MonoBehaviour
 {
     // player to spawn
     public GameObject playerToSpawn;
-    public GameObject camera;
+    public new GameObject camera;
 
     // Start is called before the first frame update
     void Start()

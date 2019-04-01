@@ -27,12 +27,11 @@ public class ImaginationModifier : MonoBehaviour
     Transform playerTransform;
 
     // holds variables for time math
-    float accumulatedTime;
     float imaginationDamagerPerMS = 1f;
 
     // used to restore values when new second state appears 
     // MAY BE TEMPORARY
-    float restoreValue = float.MaxValue;
+    //float restoreValue = float.MaxValue;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +47,6 @@ public class ImaginationModifier : MonoBehaviour
                 // initializes variabels
                 distanceToPlayer = 0;
                 determinedDistance = 0;
-                accumulatedTime = 0;
 
                 // sets up accumulated cost
                 accumulatedPieceCost = 0;
@@ -65,7 +63,6 @@ public class ImaginationModifier : MonoBehaviour
                 // initializes variabels
                 distanceToPlayer = 0;
                 determinedDistance = 0;
-                accumulatedTime = 0;
 
                 // gets player transform for math later
                 playerTransform = GameObject.FindGameObjectWithTag("Player").transform;

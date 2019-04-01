@@ -19,7 +19,7 @@ public class DropDoor : MonoBehaviour
     bool doorOpened; // for list analysis
     float dropSpeed = 0.2f;
     float startingposition;
-    bool anyButtonsOn;
+    //bool anyButtonsOn;
     bool movingDown;
     bool movingUp;
 
@@ -53,7 +53,7 @@ public class DropDoor : MonoBehaviour
         EventManager.AddButtonUnPressedListeners(AnyUnPressedButtons);
 
         // for those using the or door
-        anyButtonsOn = false;
+        //anyButtonsOn = false;
 
         // gets audio object
         myAudio = gameObject.GetComponent<AudioSource>();
@@ -173,14 +173,14 @@ public class DropDoor : MonoBehaviour
 
                 if (orDoor)
                 {
-                    // resets for testing
-                    anyButtonsOn = false;
+                    //// resets for testing
+                    //anyButtonsOn = false;
 
                     for (int j = 0; j < myActivators.Capacity; j++)
                     {
                         if (allButtonsReady[j])
                         {
-                            anyButtonsOn = true;
+                            //anyButtonsOn = true;
                             break;
                         }
                         else if (j == (myActivators.Capacity - 1))

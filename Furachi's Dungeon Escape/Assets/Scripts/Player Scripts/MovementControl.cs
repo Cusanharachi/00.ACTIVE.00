@@ -32,10 +32,7 @@ public class MovementControl : MonoBehaviour
     bool holding;
     GameObject currentpuzzlepiece;
 
-    float puzzlePieceDistance = 4;
-
     // cube handling stuff
-    bool letGo;
     bool active;
 
     // jumping movement
@@ -45,7 +42,6 @@ public class MovementControl : MonoBehaviour
     //float jumpingMaxHeight = 3.0f;
     //float jumpHieight = 0.0f;
     //float jumpTime = 1.5f;
-    float accumulatedTime;
 
     // player puzzle piece variables
     bool placedPiece;
@@ -63,7 +59,6 @@ public class MovementControl : MonoBehaviour
 
         // sets early
         puzzlepiece = false;
-        letGo = true;
         active = false;
 
         // allows for movement
@@ -77,7 +72,6 @@ public class MovementControl : MonoBehaviour
 
         // prepares jumping
         isJumping = false;
-        accumulatedTime = 0;
     }
 
     // Update is called once per frame

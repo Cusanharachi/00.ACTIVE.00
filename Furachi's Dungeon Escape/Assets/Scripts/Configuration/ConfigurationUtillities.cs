@@ -9,7 +9,7 @@ public class ConfigurationUtillities : MonoBehaviour
 {
     // gets a static configuration data 
     // so everyone shares a single file
-    static ConfigurationData configurationData;
+    static ConfigurationData configurationData = new ConfigurationData();
 
     #region Properties
 

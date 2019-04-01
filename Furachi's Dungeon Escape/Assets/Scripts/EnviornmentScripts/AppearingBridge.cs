@@ -5,7 +5,7 @@ using UnityEngine;
 public class AppearingBridge : MonoBehaviour
 {
     // holds values for color and the render
-    static float alpha = 255;
+    //static float alpha = 255;
     Color myColor;
     Renderer myRenderer;
 
@@ -91,7 +91,6 @@ public class AppearingBridge : MonoBehaviour
         // uses distance and object to store which is closest
         float testingDistance = -1;
         float closestSpiritDistance = -1;
-        GameObject closestSpirit = null;
 
         // checks all of the spirits to see if any are closer
         foreach (GameObject spirit in spirits)

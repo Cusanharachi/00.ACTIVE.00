@@ -16,7 +16,7 @@ public class SecondPlayerScript : MonoBehaviour
 
     // second state active
     bool twoBeings;
-    bool secondExists;
+    //bool secondExists;
 
     // events for state changes and assiting stuff
     SecondStateTransitionEvent secondStateTransitionEvent;
@@ -35,7 +35,7 @@ public class SecondPlayerScript : MonoBehaviour
         // makes empty second state
         mySecondState = null;
         twoBeings = false;
-        secondExists = false;
+        //secondExists = false;
 
         // value to change the number of affectors for the second state
         StuckValue = 0;

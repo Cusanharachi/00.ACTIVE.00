@@ -12,7 +12,7 @@ public class Collectable : MonoBehaviour
     // Event variables
     ButtonPressedEvent buttonPressedEvent;
 
-    bool secondTouchedMe;
+    //bool secondTouchedMe;
 
     bool playerTouching;
     bool secondTouching;
@@ -25,7 +25,7 @@ public class Collectable : MonoBehaviour
     void Start()
     {
         // handles extra problems
-        secondTouchedMe = false;
+        //secondTouchedMe = false;
 
         // creates new event
         buttonPressedEvent = new ButtonPressedEvent();
