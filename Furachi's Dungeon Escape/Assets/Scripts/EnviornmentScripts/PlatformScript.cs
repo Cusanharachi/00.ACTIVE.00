@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformScript : MonoBehaviour
 {
+    // bool used to halt process until activated
+    public bool moving = true;
     public GameObject start;
     public GameObject end;
 
@@ -35,69 +37,72 @@ public class PlatformScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(toStart)
+        if (moving)
         {
-            if(Vector3.Distance(transform.position, start.transform.position) < 0.1)
+            if (toStart)
             {
-                accumulatedTime += Time.deltaTime;
-                myBody.velocity = zero;
-                if (waitTime <= accumulatedTime)
+                if (Vector3.Distance(transform.position, start.transform.position) < 0.1)
                 {
-                    toStart = false;
-                    targetposition = end.transform.position;
-                    accumulatedTime = 0;
+                    accumulatedTime += Time.deltaTime;
+                    myBody.velocity = zero;
+                    if (waitTime <= accumulatedTime)
+                    {
+                        toStart = false;
+                        targetposition = end.transform.position;
+                        accumulatedTime = 0;
+                    }
+                }
+                else
+                {
+                    positionMovementVector();
                 }
             }
             else
             {
-                positionMovementVector();
-            }
-        }
-        else
-        {
-            if (Vector3.Distance(transform.position, end.transform.position) < 0.1)
-            {
-                accumulatedTime += Time.deltaTime;
-                myBody.velocity = zero;
-                if (waitTime <= accumulatedTime)
+                if (Vector3.Distance(transform.position, end.transform.position) < 0.1)
                 {
-                    toStart = true;
-                    targetposition = start.transform.position;
-                    accumulatedTime = 0;
+                    accumulatedTime += Time.deltaTime;
+                    myBody.velocity = zero;
+                    if (waitTime <= accumulatedTime)
+                    {
+                        toStart = true;
+                        targetposition = start.transform.position;
+                        accumulatedTime = 0;
+                    }
+                }
+                else
+                {
+                    positionMovementVector();
                 }
             }
-            else
+
+            // both statements ensure speed limit is maintained.
+            if (myBody.velocity.x > speedLimit.x)
             {
-                positionMovementVector();
+                myBody.velocity = new Vector3(speedLimit.x, myBody.velocity.y, myBody.velocity.z);
             }
-        }
+            else if ((myBody.velocity.x < -speedLimit.x))
+            {
+                myBody.velocity = new Vector3(-speedLimit.x, myBody.velocity.y, myBody.velocity.z);
+            }
 
-        // both statements ensure speed limit is maintained.
-        if (myBody.velocity.x > speedLimit.x)
-        {
-            myBody.velocity = new Vector3(speedLimit.x, myBody.velocity.y, myBody.velocity.z);
-        }
-        else if ((myBody.velocity.x < -speedLimit.x))
-        {
-            myBody.velocity = new Vector3(-speedLimit.x, myBody.velocity.y, myBody.velocity.z);
-        }
+            if (myBody.velocity.z > speedLimit.z)
+            {
+                myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, speedLimit.z);
+            }
+            else if (myBody.velocity.z < -speedLimit.z)
+            {
+                myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, -speedLimit.z);
+            }
 
-        if (myBody.velocity.z > speedLimit.z)
-        {
-            myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, speedLimit.z);
-        }
-        else if (myBody.velocity.z < -speedLimit.z)
-        {
-            myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, -speedLimit.z);
-        }
-
-        if (myBody.velocity.y > speedLimit.y)
-        {
-            myBody.velocity = new Vector3(myBody.velocity.x, speedLimit.y, myBody.velocity.z);
-        }
-        else if (myBody.velocity.y < -speedLimit.y)
-        {
-            myBody.velocity = new Vector3(myBody.velocity.x, -speedLimit.y, myBody.velocity.z);
+            if (myBody.velocity.y > speedLimit.y)
+            {
+                myBody.velocity = new Vector3(myBody.velocity.x, speedLimit.y, myBody.velocity.z);
+            }
+            else if (myBody.velocity.y < -speedLimit.y)
+            {
+                myBody.velocity = new Vector3(myBody.velocity.x, -speedLimit.y, myBody.velocity.z);
+            }
         }
     }
 
@@ -112,5 +117,11 @@ public class PlatformScript : MonoBehaviour
         toVectorAngle.z *= followSpeed * specialSpeed;
 
         myBody.AddRelativeForce(toVectorAngle, ForceMode.Impulse);
+    }
+
+    public bool GetMoving
+    {
+        get { return moving; }
+        set { moving = value; }
     }
 }

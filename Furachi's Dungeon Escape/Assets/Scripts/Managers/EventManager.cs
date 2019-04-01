@@ -18,12 +18,12 @@ public class EventManager : MonoBehaviour
         // otherwise destroys self if not needed
         if (Instance == null)
         {
-            Instance = new EventManager();
-            DontDestroyOnLoad(gameObject);
+            Instance = gameObject.GetComponent<EventManager>();
+            DontDestroyOnLoad(this);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 
@@ -212,15 +212,21 @@ public class EventManager : MonoBehaviour
     {
         // adds invoker to list and to all listeners
         healthChangedInvokers.Add(invoker);
-        foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
-        {
-            invoker.GetComponent<HealthModifer>().AddHealthChangedListener(listener);
-        }
 
-        // adds the imagination change invokers to the list of all listeners
-        foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
+        if (invoker.GetComponent<HealthModifer>() != null)
         {
-            invoker.GetComponent<ImaginationModifier>().AddHealthChangedListener(listener);
+            foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
+            {
+                invoker.GetComponent<HealthModifer>().AddHealthChangedListener(listener);
+            }
+        }
+        else
+        {
+            // adds the imagination change invokers to the list of all listeners
+            foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
+            {
+                invoker.GetComponent<ImaginationModifier>().AddHealthChangedListener(listener);
+            }
         }
     }
 
@@ -248,7 +254,6 @@ public class EventManager : MonoBehaviour
         playerDeathListeners.Add(listener);
         foreach (GameObject invoker in playerDeathInvokers)
         {
-            HealthManager hm = invoker.GetComponent<HealthManager>();
             invoker.GetComponent<HealthManager>().AddPlayerDeathListener(listener);
         }
     }

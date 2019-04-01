@@ -42,12 +42,12 @@ public class HealthModifer : MonoBehaviour
     {
         if ((damagePlayer || damageBoth) && other.gameObject.tag == "Player")
         {
-            Debug.Log("touching player");
+            //Debug.Log("touching player");
             healthChangedEvent.Invoke(Enumeration.playerState.playerState,  specialDamageValue * 10f * Time.deltaTime);
         }
         else if ((!damagePlayer || damageBoth) && other.gameObject.tag == "SecondState")
         {
-            Debug.Log("touching second");
+            //Debug.Log("touching second");
             healthChangedEvent.Invoke(Enumeration.playerState.secondState, specialDamageValue * 10f * Time.deltaTime);
         }
     }

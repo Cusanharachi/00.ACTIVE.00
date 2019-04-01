@@ -5,6 +5,19 @@ using UnityEngine.Events;
 
 public class FollowSecond : MonoBehaviour
 {
+    // delimits a speed to be anything
+    public bool useSpeedLimit = true;
+    public float closerStopDistance = 0;
+
+    // special location relative to target
+    public bool useTargetY = false;
+    public float relativeX = 0;
+    public float relativeY = 0;
+    public float relativeZ = 0;
+
+    // used to change Y when necessary
+    float adjustedY;
+
     // detrimines if player or enemy follower
     public bool followSecond;
     public float specialFollowDistance = 1;
@@ -13,10 +26,10 @@ public class FollowSecond : MonoBehaviour
     // used for movement calculations
     Transform target;
     float distance;
-    float followDistance = 10;
-    float toCloseDistance = 2.5f;
-    float followSpeed = 0.1f;
-    Vector3 speedLimit = new Vector3 (2f, 0, 2f);
+    static float followDistance = 10;
+    static float toCloseDistance = 2.5f;
+    static float followSpeed = 0.1f;
+    static Vector3 speedLimit = new Vector3 (2f, 0, 2f);
 
     // handles player existence
     bool secondStateExists;
@@ -45,6 +58,9 @@ public class FollowSecond : MonoBehaviour
             }
         }
 
+        // sets adjusted y so that it will be zero unless clarified
+        adjustedY = 0;
+
         // makes sure it starts imobile
         secondStateExists = false;
 
@@ -68,7 +84,7 @@ public class FollowSecond : MonoBehaviour
         {
             distance = Vector3.Distance(target.position , transform.position);
 
-            if (distance <= (followDistance * specialFollowDistance) && distance >= toCloseDistance)
+            if (distance <= (followDistance * specialFollowDistance) && distance >= (toCloseDistance - closerStopDistance))
             {
                 PlayerMovementVector();
             }
@@ -77,38 +93,41 @@ public class FollowSecond : MonoBehaviour
         {
             distance = Vector3.Distance(target.position, transform.position);
 
-            if (distance <= (followDistance * specialFollowDistance) && distance >= toCloseDistance)
+            if (distance <= (followDistance * specialFollowDistance) && distance >= (toCloseDistance - closerStopDistance))
             {
                 PlayerMovementVector();
             }
         }
 
-        // both statements ensure speed limit is maintained.
-        if (myBody.velocity.x > speedLimit.x)
+        if (useSpeedLimit)
         {
-            myBody.velocity = new Vector3(speedLimit.x, myBody.velocity.y, myBody.velocity.z);
-        }
-        else if ((myBody.velocity.x < -speedLimit.x))
-        {
-            myBody.velocity = new Vector3(-speedLimit.x, myBody.velocity.y, myBody.velocity.z);
-        }
+            // both statements ensure speed limit is maintained.
+            if (myBody.velocity.x > speedLimit.x)
+            {
+                myBody.velocity = new Vector3(speedLimit.x, myBody.velocity.y, myBody.velocity.z);
+            }
+            else if ((myBody.velocity.x < -speedLimit.x))
+            {
+                myBody.velocity = new Vector3(-speedLimit.x, myBody.velocity.y, myBody.velocity.z);
+            }
 
-        if (myBody.velocity.z > speedLimit.z)
-        {
-            myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, speedLimit.z);
-        }
-        else if (myBody.velocity.z < -speedLimit.z)
-        {
-            myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, -speedLimit.z);
-        }
+            if (myBody.velocity.z > speedLimit.z)
+            {
+                myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, speedLimit.z);
+            }
+            else if (myBody.velocity.z < -speedLimit.z)
+            {
+                myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, -speedLimit.z);
+            }
 
-        if (myBody.velocity.x != 0 || myBody.velocity.z != 0 && !myAudio.isPlaying)
-        {
-            myAudio.Play();
-        }
-        else if (myBody.velocity.x == 0 && myBody.velocity.z == 0 && myAudio.isPlaying)
-        {
-            //myAudio.Pause();
+            if (myBody.velocity.x != 0 || myBody.velocity.z != 0 && !myAudio.isPlaying)
+            {
+                myAudio.Play();
+            }
+            else if (myBody.velocity.x == 0 && myBody.velocity.z == 0 && myAudio.isPlaying)
+            {
+                //myAudio.Pause();
+            }
         }
     }
 
@@ -143,10 +162,16 @@ public class FollowSecond : MonoBehaviour
 
     void PlayerMovementVector()
     {
-        Vector3 toVectorAngle = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z);
+        if (useTargetY)
+        {
+            adjustedY = (relativeY + target.position.y) - transform.position.y;
+        }
+
+        Vector3 toVectorAngle = new Vector3( (relativeX + target.position.x) - transform.position.x, adjustedY, (relativeZ + target.position.z) - transform.position.z);
 
         toVectorAngle.Normalize();
 
+        toVectorAngle.y *= followSpeed * specialSpeed;
         toVectorAngle.x *= followSpeed * specialSpeed;
         toVectorAngle.z *= followSpeed * specialSpeed;
 

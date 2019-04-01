@@ -137,7 +137,7 @@ public class SecondPlayerScript : MonoBehaviour
         // adds the value
         StuckValue += valueToChange;
 
-        Debug.Log(StuckValue);
+        //Debug.Log(StuckValue);
 
         // if there aren't any in contanct then we aren't stuck
         if (StuckValue > 0)
@@ -149,6 +149,6 @@ public class SecondPlayerScript : MonoBehaviour
             SecondStuck = false;
         }
 
-        Debug.Log(SecondStuck);
+        //Debug.Log(SecondStuck);
     }
 }

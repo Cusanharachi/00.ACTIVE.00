@@ -83,7 +83,7 @@ public class SequenceDoor : MonoBehaviour
         {
             if (checkSequence)
             {
-                Debug.Log("sequenceChecl");
+                //Debug.Log("sequenceChecl");
                 for (int i = 0; i < myActivators.Capacity; i++)
                 {
                     if (allButtonsReady[i])
@@ -172,14 +172,14 @@ public class SequenceDoor : MonoBehaviour
                 {
                     if (i == buttonToCheckUpTo && inSequence)
                     {
-                        Debug.Log("is in sequence");
+                        //Debug.Log("is in sequence");
                         buttonToCheckUpTo += 1;
                         break;
                     }
                     else
                     {
                         inSequence = false;
-                        Debug.Log("no sequence");
+                        //Debug.Log("no sequence");
                         break;
                     }
                 }
@@ -203,7 +203,7 @@ public class SequenceDoor : MonoBehaviour
             }
             else if (j == (myActivators.Capacity - 1) && allButtonsReady[j])
             {
-                Debug.Log("willSequenceDoorOpen");
+                //Debug.Log("willSequenceDoorOpen");
                 if (sequenceDoor)
                 {
                     if (!doorOpened && inSequence)

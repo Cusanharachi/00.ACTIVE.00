@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3040265522508797161}
   - component: {fileID: 3040265522508797162}
   - component: {fileID: 3040265522508797158}
+  - component: {fileID: 1182009191824682713}
   m_Layer: 0
   m_Name: SecondStuckField
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493cfe872ed85f440a09ef1ddb8e9c64, type: 2}
+  - {fileID: 2100000, guid: c039ebda114be724dbc55d47f660a536, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,3 +105,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac45f3d3037981f4da36337cd34f4f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1182009191824682713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040265522508797163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fe948e959f6f64f9498864d8bc0ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePlayer: 0
+  damageBoth: 0
+  specialDamageValue: -10

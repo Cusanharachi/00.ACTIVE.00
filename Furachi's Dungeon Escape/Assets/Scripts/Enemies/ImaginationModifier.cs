@@ -21,7 +21,7 @@ public class ImaginationModifier : MonoBehaviour
     public float imaginationDamagerPerMeter = 10f;
     public float imaginationSafeDistance = 5;
 
-    // holds variables for distance math
+    // holds variables for distanc                                                                                          e math
     float distanceToPlayer;
     float determinedDistance;
     Transform playerTransform;
@@ -83,7 +83,7 @@ public class ImaginationModifier : MonoBehaviour
         }
         else
         {
-            Debug.Log("dissapeard");
+            //Debug.Log("dissapeard");
             Destroy(gameObject);
         }
     }

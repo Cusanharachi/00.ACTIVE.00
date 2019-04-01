@@ -148,7 +148,7 @@ public class MovementControl : MonoBehaviour
             {
                 instantiatedPiece = Instantiate(puzzlePiece, transform.position + puzzlePiece.transform.position, puzzlePiece.transform.rotation);
                 placedPiece = true;
-                Debug.Log("appeared");
+                //Debug.Log("appeared");
             }
             else if (Input.GetKeyDown(KeyCode.LeftShift) && Time.timeScale != 0 && placedPiece && !amISecond)
             {

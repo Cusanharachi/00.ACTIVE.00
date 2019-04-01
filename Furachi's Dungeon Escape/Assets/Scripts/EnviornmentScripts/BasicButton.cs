@@ -8,7 +8,7 @@ public class BasicButton : MonoBehaviour
     // switches button type
     [SerializeField]
     public bool isHoldButton;
-    public bool isReverseButton;
+    //public bool isReverseButton;
     public bool isSpecialButton = false;
 
     // Event variables
@@ -50,15 +50,15 @@ public class BasicButton : MonoBehaviour
         secondTouching = false;
 
         // makes sure we aren't spamming
-        pressed = true;
-        unPressed = false;
+        pressed = false;
+        unPressed = true;
 
 
         // tells door it is an open button to start if so
-        if (isReverseButton)
-        {
-            ButtonPressed();
-        }
+        //if (isReverseButton)
+        //{
+        //    ButtonPressed();
+        //}
 
         // adds button to list of invokers
         EventManager.AddButtonUnPressedInvokers(gameObject);
