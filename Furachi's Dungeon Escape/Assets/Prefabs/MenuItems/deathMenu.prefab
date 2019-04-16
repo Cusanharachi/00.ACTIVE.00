@@ -741,7 +741,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: Restart From Last CheckPoint
 --- !u!1 &3767876385320002189
 GameObject:
   m_ObjectHideFlags: 0

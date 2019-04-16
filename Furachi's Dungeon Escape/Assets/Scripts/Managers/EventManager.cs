@@ -195,7 +195,14 @@ public class EventManager : MonoBehaviour
         healthChangedListeners.Add(listener);
         foreach (GameObject invoker in healthChangedInvokers)
         {
-            invoker.GetComponent<HealthModifer>().AddHealthChangedListener(listener);
+            if (invoker.GetComponent<HealthModifer>() != null)
+            {
+                invoker.GetComponent<HealthModifer>().AddHealthChangedListener(listener);
+            }
+            else
+            {
+                invoker.GetComponent<SecondPlayerScript>().AddHealthChangedListener(listener);
+            }
         }
 
         // adds listeners to all imagination changed invokers
@@ -203,6 +210,7 @@ public class EventManager : MonoBehaviour
         {
             invoker.GetComponent<ImaginationModifier>().AddHealthChangedListener(listener);
         }
+
     }
 
     /// <sumary>
@@ -218,6 +226,13 @@ public class EventManager : MonoBehaviour
             foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
             {
                 invoker.GetComponent<HealthModifer>().AddHealthChangedListener(listener);
+            }
+        }
+        else if (invoker.GetComponent<SecondPlayerScript>() != null)
+        {
+            foreach (UnityAction<Enumeration.playerState, float> listener in healthChangedListeners)
+            {
+                invoker.GetComponent<SecondPlayerScript>().AddHealthChangedListener(listener);
             }
         }
         else

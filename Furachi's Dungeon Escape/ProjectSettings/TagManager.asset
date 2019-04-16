@@ -22,6 +22,8 @@ TagManager:
   - BridgeSpirit
   - LevelEnd
   - movingPlatform
+  - SpawnLocation
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

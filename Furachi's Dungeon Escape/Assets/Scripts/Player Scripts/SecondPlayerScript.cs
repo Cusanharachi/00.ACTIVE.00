@@ -20,6 +20,7 @@ public class SecondPlayerScript : MonoBehaviour
 
     // events for state changes and assiting stuff
     SecondStateTransitionEvent secondStateTransitionEvent;
+    HealthChangedEvent healthChangedEvent;
 
     AudioSource myAudio;
     public AudioClip born;
@@ -28,6 +29,8 @@ public class SecondPlayerScript : MonoBehaviour
     // bools to prevent the second state form being removed
     bool SecondStuck;
     int StuckValue;
+
+    Vector3 spawnLocation;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,7 @@ public class SecondPlayerScript : MonoBehaviour
 
         // creates new event
         secondStateTransitionEvent = new SecondStateTransitionEvent();
+        healthChangedEvent = new HealthChangedEvent();
 
         myAudio = gameObject.GetComponent<AudioSource>();
 
@@ -50,6 +54,11 @@ public class SecondPlayerScript : MonoBehaviour
         EventManager.AddPlayerDeathListeners(Die);
         EventManager.AddSecondStateChangeInvokers(this.gameObject);
         EventManager.AddSecondStateStuckListeners(ChangeStuckValue);
+        EventManager.AddHealthChangedInvokers(gameObject);
+
+        // sets spawn location to current location, since this will most likely be where the 
+        // initial spawn lcoation is for the player
+        spawnLocation = transform.position;
     }
 
     // Update is called once per frame
@@ -102,6 +111,27 @@ public class SecondPlayerScript : MonoBehaviour
         secondStateTransitionEvent.AddListener(listener);
     }
 
+    public void AddHealthChangedListener(UnityAction<Enumeration.playerState, float> listener)
+    {
+        healthChangedEvent.AddListener(listener);
+    }
+
+    /// <summary>
+    /// used for asserting the spawn location
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "CheckPoint")
+        {
+            if (other.transform.position != spawnLocation)
+            {
+                spawnLocation = other.transform.position;
+                healthChangedEvent.Invoke(Enumeration.playerState.playerState, 100);
+            }
+        }
+    }
+
     /// <summary>
     /// kills the player or second state if their death is triggered
     /// by the event system
@@ -112,6 +142,8 @@ public class SecondPlayerScript : MonoBehaviour
         if (whoDies == Enumeration.playerState.playerState)
         {
             Instantiate(deathMenu);
+            transform.position = spawnLocation;
+            healthChangedEvent.Invoke(Enumeration.playerState.playerState, 100);
         }
         else
         {
