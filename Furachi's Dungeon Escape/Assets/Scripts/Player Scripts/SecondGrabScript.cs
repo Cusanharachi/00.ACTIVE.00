@@ -14,6 +14,12 @@ public class SecondGrabScript : MonoBehaviour
     //bool letGo;
     bool active;
 
+    public float specialSpeed = 1;
+    static float followSpeed = 0.1f;
+    Vector3 toVectorAngle;
+
+    public float dropDistance = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +33,8 @@ public class SecondGrabScript : MonoBehaviour
 
         // allows for movement changing
         EventManager.AddSecondStateChangeListeners(ChangeMovabillity);
+
+        toVectorAngle = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -58,8 +66,35 @@ public class SecondGrabScript : MonoBehaviour
             // moves pieces position to our desired position
             if (holding && currentpuzzlepiece != null)
             {
-                currentpuzzlepiece.transform.position = ((transform.position + transform.forward + transform.right));
+                // Debug.Log(Vector3.Distance(currentpuzzlepiece.transform.position, transform.position + transform.forward + transform.right + transform.forward));
+                if (Vector3.Distance(currentpuzzlepiece.transform.position, transform.position + transform.forward + transform.right + transform.forward) > 0.2)
+                {
+                    //currentpuzzlepiece.transform.position = ((transform.position + transform.forward + transform.right));
+                    Vector3 toPlayerVector = transform.position + transform.forward + transform.right + transform.forward;
+                    toPlayerVector.y += 0.25f;
+                    toVectorAngle = toPlayerVector - currentpuzzlepiece.transform.position;
+                    //toVectorAngle = transform.position + transform.forward + transform.right;
+
+                    toVectorAngle.Normalize();
+
+                    toVectorAngle.y *= followSpeed * specialSpeed;
+                    toVectorAngle.x *= followSpeed * specialSpeed;
+                    toVectorAngle.z *= followSpeed * specialSpeed;
+
+                    currentpuzzlepiece.GetComponent<Rigidbody>().AddForce(toVectorAngle, ForceMode.Impulse);
+                }
+                else
+                {
+                    currentpuzzlepiece.GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward + transform.right + transform.forward);
+                }
             }
+        }
+
+        if (currentpuzzlepiece != null && Vector3.Distance(currentpuzzlepiece.transform.position, transform.position) > dropDistance)
+        {
+            holding = false;
+            currentpuzzlepiece = null;
+            active = false;
         }
     }
 

@@ -115,7 +115,14 @@ public class EventManager : MonoBehaviour
         buttonPressedListeners.Add(listener);
         foreach (GameObject invoker in buttonPressedInvokers)
         {
-            invoker.GetComponent<BasicButton>().AddButtonPressedListener(listener);
+            if (invoker.GetComponent<BasicButton>() != null)
+            {
+                invoker.GetComponent<BasicButton>().AddButtonPressedListener(listener);
+            }
+            else
+            {
+                invoker.GetComponent<Collectable>().AddButtonPressedListener(listener);
+            }
             //invoker.GetComponent<HoldButton>().AddButtonPressedListener(listener);
         }
     }
@@ -129,7 +136,14 @@ public class EventManager : MonoBehaviour
         buttonPressedInvokers.Add(invoker);
         foreach (UnityAction<GameObject> listener in buttonPressedListeners)
         {
-            invoker.GetComponent<BasicButton>().AddButtonPressedListener(listener);
+            if (invoker.GetComponent<BasicButton>() != null)
+            {
+                invoker.GetComponent<BasicButton>().AddButtonPressedListener(listener);
+            }
+            else
+            {
+                invoker.GetComponent<Collectable>().AddButtonPressedListener(listener);
+            }
             //invoker.GetComponent<HoldButton>().AddButtonPressedListener(listener);
         }
     }

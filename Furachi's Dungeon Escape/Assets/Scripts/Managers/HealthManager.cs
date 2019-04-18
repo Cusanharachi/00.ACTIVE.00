@@ -99,10 +99,13 @@ public class HealthManager : MonoBehaviour
         //testing code
         if (healthScalingValue - value >= playerHealth)
         {
-            value = playerHealth - healthScalingValue;
+            Debug.Log("player health restored");
+            value = 0;
+            healthScalingValue = playerHealth;
         }
         else if (healthScalingValue - value <= 0)
         {
+            Debug.Log("PlayerHealth Reduced");
             value = healthScalingValue;
 
             // finished changing values so player can see their empty health after death.
@@ -119,7 +122,11 @@ public class HealthManager : MonoBehaviour
             // stops time since the player is dead
             Time.timeScale = 0;
         }
+
+        Debug.Log("healthscaling value: " + healthScalingValue);
         healthScalingValue -= value;
+        Debug.Log("healthscalingavalue: " + healthScalingValue);
+        Debug.Log("value: " + value);
         //Debug.Log("Changing: health" + healthScalingValue);
         healthScalingVector.x = healthScalingValue / playerHealth;
         healthPanelRect.transform.localScale = healthScalingVector;

@@ -8,6 +8,7 @@ public class SecondPlayerScript : MonoBehaviour
 {
     // death menu
     public GameObject deathMenu;
+    GameObject myDeathMenu;
 
     // secondstate
     [SerializeField]
@@ -59,6 +60,8 @@ public class SecondPlayerScript : MonoBehaviour
         // sets spawn location to current location, since this will most likely be where the 
         // initial spawn lcoation is for the player
         spawnLocation = transform.position;
+
+        myDeathMenu = null;
     }
 
     // Update is called once per frame
@@ -124,10 +127,10 @@ public class SecondPlayerScript : MonoBehaviour
     {
         if (other.tag == "CheckPoint")
         {
-            if (other.transform.position != spawnLocation)
+            if (other.transform.position != spawnLocation && healthChangedEvent != null)
             {
                 spawnLocation = other.transform.position;
-                healthChangedEvent.Invoke(Enumeration.playerState.playerState, 100);
+                healthChangedEvent.Invoke(Enumeration.playerState.playerState, -400);
             }
         }
     }
@@ -141,9 +144,12 @@ public class SecondPlayerScript : MonoBehaviour
     {
         if (whoDies == Enumeration.playerState.playerState)
         {
-            Instantiate(deathMenu);
+            if (myDeathMenu == null)
+            {
+                myDeathMenu = Instantiate(deathMenu);
+            }
             transform.position = spawnLocation;
-            healthChangedEvent.Invoke(Enumeration.playerState.playerState, 100);
+            healthChangedEvent.Invoke(Enumeration.playerState.playerState, -400);
         }
         else
         {

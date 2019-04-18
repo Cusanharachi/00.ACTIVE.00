@@ -877,6 +877,7 @@ GameObject:
   - component: {fileID: 3487784756732770787}
   - component: {fileID: 4494103186008056391}
   - component: {fileID: 5497867601083869659}
+  - component: {fileID: 6048046788138387045}
   m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: JumpAbleCollider
@@ -920,6 +921,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6048046788138387045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967370347459621268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fe948e959f6f64f9498864d8bc0ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePlayer: 1
+  damageBoth: 1
+  specialDamageValue: -10
 --- !u!1 &7485812370994254697
 GameObject:
   m_ObjectHideFlags: 0

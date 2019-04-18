@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlatformScript : MonoBehaviour
 {
     // bool used to halt process until activated
-    public bool moving = true;
+    public bool moving;
     public GameObject start;
     public GameObject end;
 
@@ -32,6 +32,8 @@ public class PlatformScript : MonoBehaviour
         myBody = gameObject.GetComponent<Rigidbody>();
 
         targetposition = start.transform.position;
+
+        moving = false;
     }
 
     // Update is called once per frame

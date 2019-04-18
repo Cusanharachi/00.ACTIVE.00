@@ -102,10 +102,10 @@ public class ImaginationModifier : MonoBehaviour
             // increases imagination over time
             healthChangedEvent.Invoke(Enumeration.playerState.secondState, - Time.deltaTime * imaginationDamagerPerMS);
 
-            if (accumulatedPieceCost < 0)
-            {
-                accumulatedPieceCost += Time.deltaTime * imaginationDamagerPerMS;
-            }
+            //if (accumulatedPieceCost < 0)
+            //{
+            accumulatedPieceCost += Time.deltaTime * imaginationDamagerPerMS;
+            //}
         }
         else
         {

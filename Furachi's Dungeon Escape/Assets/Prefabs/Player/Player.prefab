@@ -211,6 +211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzlePiece: {fileID: 1167083063370035903, guid: 19e6d11b40820d44582238afc97c6f77,
     type: 3}
+  specialSpeed: 4
+  dropDistance: 5
 --- !u!114 &61020907871663841
 MonoBehaviour:
   m_ObjectHideFlags: 0

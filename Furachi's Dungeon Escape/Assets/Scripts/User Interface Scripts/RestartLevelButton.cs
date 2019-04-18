@@ -5,12 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class RestartLevelButton : MonoBehaviour
 {
+    public bool realRestart = false;
+    public GameObject myParent;
+
     public void OnClick()
     {
-        //EventManager.ClearManager();
-        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-        Destroy(GetComponentInParent<GameObject>());
+        if (realRestart)
+        {
+            Time.timeScale = 1;
+            EventManager.ClearManager();
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Destroy(myParent);
+        }
     }
 }
