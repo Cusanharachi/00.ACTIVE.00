@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 867946185}
   - component: {fileID: 867946187}
   - component: {fileID: 867946186}
+  - component: {fileID: 867946188}
   m_Layer: 0
   m_Name: healthModifier
   m_TagString: Untagged
@@ -53,6 +54,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &867946188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867946184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fe948e959f6f64f9498864d8bc0ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePlayer: 1
+  damageBoth: 0
+  specialDamageValue: 1
 --- !u!1 &297415281901592813
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,9 +502,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0441d064319844c4986558b604adf56b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSpeedLimit: 1
+  closerStopDistance: 0
+  useTargetY: 0
+  relativeX: 0
+  relativeY: 0
+  relativeZ: 0
   followSecond: 0
-  specialFollowDistance: 2
-  specialSpeed: 5
+  specialFollowDistance: 5
+  specialSpeed: 250
 --- !u!54 &297415283126752936
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -497,7 +519,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297415283126752939}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 250
   m_Drag: 2
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -516,8 +538,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8928132, z: 1}
-  m_Center: {x: 0, y: -0.5454043, z: 0}
+  m_Size: {x: 3.3417735, y: 0.9985198, z: 1}
+  m_Center: {x: 0.10280347, y: 0.0039535365, z: 0}
 --- !u!82 &297415283126752932
 AudioSource:
   m_ObjectHideFlags: 0

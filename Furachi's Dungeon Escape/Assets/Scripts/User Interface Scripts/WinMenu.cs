@@ -6,6 +6,7 @@ public class WinMenu : MonoBehaviour
 {
     // holds the winMenuFor  use 
     public GameObject winMenu;
+    public GameObject continueMenu;
 
     // used to prevent multiple menus
     bool menuLaunched;
@@ -29,11 +30,22 @@ public class WinMenu : MonoBehaviour
         {
             if (!menuLaunched)
             {
-                menuLaunched = true;
+                if (GameManager.Instance.LastScene)
+                {
+                    menuLaunched = true;
 
-                // launches a menu and stops time
-                Instantiate(winMenu);
-                Time.timeScale = 0;
+                    // launches a menu and stops time
+                    Instantiate(winMenu);
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    menuLaunched = true;
+
+                    // launches a menu and stops time
+                    Instantiate(continueMenu);
+                    Time.timeScale = 0;
+                }
             }
         }
     }

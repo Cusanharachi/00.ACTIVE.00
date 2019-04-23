@@ -12,6 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 060fffe99ba6fc24ea7df37e63f76763
   - enabled: 1
-    path: Assets/Scenes/SliceOfLife.unity
+    path: Assets/Scenes/Levels/SliceOfLife.unity
     guid: c0027f05fa4f285429daaa0c18f357d3
+  - enabled: 1
+    path: Assets/Scenes/Levels/level0.unity
+    guid: 315d175fc4f769146a977f8acee5c55a
+  - enabled: 1
+    path: Assets/Scenes/Levels/level1.unity
+    guid: cd4c4e69608bbfd4c8fd8dafa88cf939
+  - enabled: 1
+    path: Assets/Scenes/Levels/level2.unity
+    guid: ea91eb58f0eb5364a80cabf4156d9d26
+  - enabled: 1
+    path: Assets/Scenes/Levels/level4.unity
+    guid: 60251cf91088c584187b831794d953f4
   m_configObjects: {}

@@ -1,9 +1,13 @@
 Win64
 PlayerPath?
-E:/captsone game/Furachi's Dungeon Escape.exe
+C:/Users/Nathan Burns/Desktop/Furachi's Dungeon Escape/Furachi's Dungeon Escape.exe
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
-Assets/Scenes/SliceOfLife.unity
+Assets/Scenes/Levels/SliceOfLife.unity
+Assets/Scenes/Levels/level0.unity
+Assets/Scenes/Levels/level1.unity
+Assets/Scenes/Levels/level2.unity
+Assets/Scenes/Levels/level4.unity
 SceneListEnd?
 a1f19ad47d3094e235f21b74dfc423a8 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessLayer
 8bb344a2f545f7d539f03a3a01002de1 Assembly-CSharp.dll:.AppearingBridge
@@ -62,8 +66,6 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 f542c1afca5bb4022f91fdda19b8d622 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.DepthOfField
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 5fc094978ce3e3591a7500ed380d854a UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -133,7 +135,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SecondStuckField
 9c8b68ebfe472f7953931e1a931ad89f Assembly-CSharp.dll:.ToControlsButton
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-1d55dd7533bdcd225986ed34cd1ab993 Assembly-CSharp.dll:.DropDoor
+7a91a93d79325e38ea36265008ce8d8a Assembly-CSharp.dll:.DropDoor
 15a14063f16a94660849d9b33292d2e5 Assembly-CSharp.dll:.FollowSecond
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
@@ -147,7 +149,7 @@ ebb908fbf56b12f3de5b9aed45d25048 Assembly-CSharp.dll:.PlatformScript
 a263db3e68e5079b0b368033091eeb1a Assembly-CSharp.dll:.ImaginationModifier
 764fdc82389c51d884dfa78b412b3b4b Assembly-CSharp.dll:.SequenceDoor
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
-b69161ef542c7c779385808dd05a6b75 Assembly-CSharp.dll:.PlatformCollectableRequired
+f6927df4d1f02243c5548f425fdba987 Assembly-CSharp.dll:.PlatformCollectableRequired
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ToMainMenuButton
 d6fc8d3165070298511ec776ea575626 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessResources
@@ -156,6 +158,7 @@ b997aecc5551f06c92b63553f1e84049 Assembly-CSharp.dll:.PlayerMovement
 a53651ee3996fbba20dfe0fce02f0b23 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.AutoExposure
 50c443b12ccc0b475183318b5088bcc5 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessDebug
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.NextLevel
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -206,6 +209,7 @@ d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.EventManager
 0fb47656a8a8b0ddd86f72200c26dce0 Assembly-CSharp.dll:.ToCreditsButton
 d5630f96bd5a6a6eed7e1754c3fb8703 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessVolume
+ca9d1f2017461abe5e620cc938ebdf13 Assembly-CSharp.dll:.GameManager
 d0987ce3e9092dbe0fa30d73f333fffa Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.Grain
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
@@ -216,4 +220,4 @@ ac6acd886c54c48c599ab5fed5781ea7 Unity.Postprocessing.Runtime.dll:UnityEngine.Re
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ConfigurationData
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ConfigurationUtillities
-372b037643e3a0f3972f6b2a7b370088 Assembly-CSharp.dll:.WinMenu
+837c9451e2373b21a4f4ec2441284d86 Assembly-CSharp.dll:.WinMenu

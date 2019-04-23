@@ -13,6 +13,8 @@ public class PlatformCollectableRequired : MonoBehaviour
     public List<GameObject> myActivators;
     private List<bool> allButtonsReady;
 
+    public bool autoMove = false;
+
     // special collectable values
     //bool anyButtonsOn;
 
@@ -22,19 +24,26 @@ public class PlatformCollectableRequired : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // creates new variables
-        allButtonsReady = new List<bool>();
-
-        for (int i = 0; i < myActivators.Capacity; i++)
+        if (!autoMove)
         {
-            allButtonsReady.Add(false);
+            // creates new variables
+            allButtonsReady = new List<bool>();
+
+            for (int i = 0; i < myActivators.Capacity; i++)
+            {
+                allButtonsReady.Add(false);
+            }
+
+            // creates the event
+            //buttonPressedEvent = new ButtonPressedEvent();
+
+            // adds self as listener to button pressed event
+            EventManager.AddButtonPressedListeners(AreMyButtonsPressed);
         }
-
-        // creates the event
-        //buttonPressedEvent = new ButtonPressedEvent();
-
-        // adds self as listener to button pressed event
-        EventManager.AddButtonPressedListeners(AreMyButtonsPressed);
+        //else
+        //{
+            
+        //}
 
         // for those using the or door
         //anyButtonsOn = false;

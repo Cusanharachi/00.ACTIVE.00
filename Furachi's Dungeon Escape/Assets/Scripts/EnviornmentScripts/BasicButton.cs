@@ -97,7 +97,7 @@ public class BasicButton : MonoBehaviour
                 ButtonPressed();
             }
         }
-        else if (!PlayedAudio)
+        else if (PlayedAudio)
         {
             if (pressed)
             {
@@ -190,6 +190,7 @@ public class BasicButton : MonoBehaviour
     {
         myAudio.Play();
         buttonPressedEvent.Invoke(gameObject);
+        PlayedAudio = true;
     }
 
     /// <summary>
@@ -269,6 +270,10 @@ public class BasicButton : MonoBehaviour
     public void ButtonUnPressed()
     {
         myAudio.Play();
-        buttonUnPressedEvent.Invoke(this.gameObject);
+        if (isHoldButton)
+        {
+            buttonUnPressedEvent.Invoke(this.gameObject);
+            PlayedAudio = false;
+        }
     }
 }

@@ -268,6 +268,7 @@ Transform:
   - {fileID: 9167410885130176347}
   - {fileID: 4357338026619444032}
   - {fileID: 2146840387669616004}
+  - {fileID: 7794692115901229086}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -341,7 +342,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0441d064319844c4986558b604adf56b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSpeedLimit: 1
+  closerStopDistance: 0
+  useTargetY: 0
+  relativeX: 0
+  relativeY: 0
+  relativeZ: 0
   followSecond: 0
+  specialFollowDistance: 1
+  specialSpeed: 1
 --- !u!54 &3735814774301821453
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -435,6 +444,50 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &5847364462787140703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7794692115901229086}
+  - component: {fileID: 901967466842636810}
+  m_Layer: 15
+  m_Name: Cube (5)
+  m_TagString: JumpAbleCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7794692115901229086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5847364462787140703}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3735814774301821452}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &901967466842636810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5847364462787140703}
+  m_Material: {fileID: 13400000, guid: 513188b368fbf9f459fdf2a7603d5042, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.1774079, z: 0.9}
+  m_Center: {x: 0.0053959764, y: 0.48241997, z: 0.010670096}
 --- !u!1 &7767060109242716475
 GameObject:
   m_ObjectHideFlags: 0

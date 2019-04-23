@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class DropDoor : MonoBehaviour
 {
+    public float specialDropSpeed = 1;
     // for door types
     public bool orDoor;
 
@@ -73,7 +74,7 @@ public class DropDoor : MonoBehaviour
         {
             if (transform.localPosition.y >= startingposition - doorHight)
             {
-                transform.Translate(0, -dropSpeed, 0);
+                transform.Translate(0, (-dropSpeed * specialDropSpeed), 0);
             }
             else
             {
@@ -84,7 +85,7 @@ public class DropDoor : MonoBehaviour
         {
             if (transform.localPosition.y <= startingposition)
             {
-                transform.Translate(0, dropSpeed, 0);
+                transform.Translate(0, (dropSpeed * specialDropSpeed), 0);
             }
             else
             {

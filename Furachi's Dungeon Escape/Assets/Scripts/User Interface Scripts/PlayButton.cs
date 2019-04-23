@@ -7,6 +7,6 @@ public class PlayButton : MonoBehaviour
 {
     public void OnClick()
     {
-        SceneManager.LoadScene("SliceOfLife", LoadSceneMode.Single);
+        SceneManager.LoadScene(GameManager.Instance.CurrentScene, LoadSceneMode.Single);
     }
 }

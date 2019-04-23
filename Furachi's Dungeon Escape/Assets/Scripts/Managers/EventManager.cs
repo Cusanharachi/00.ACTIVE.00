@@ -19,7 +19,7 @@ public class EventManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = gameObject.GetComponent<EventManager>();
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {

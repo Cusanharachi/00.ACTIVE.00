@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Events\SecondStateTransitionEvent.cs" />
     <Compile Include="Assets\Scripts\Events\SecondStuckEvent.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\HealthManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Misc_\Enumeration.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Assets\Scripts\User Interface Scripts\BackToMenu.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\ExitGameButton.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\MenuButtons.cs" />
+    <Compile Include="Assets\Scripts\User Interface Scripts\NextLevel.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\PlayButton.cs" />
     <Compile Include="Assets\Scripts\User Interface Scripts\RestartLevelButton.cs" />
