@@ -58,6 +58,7 @@ public class SecondGrabScript : MonoBehaviour
                     else
                     {
                         holding = false;
+                        currentpuzzlepiece.GetComponent<Rigidbody>().useGravity = true;
                         currentpuzzlepiece = null;
                     }
                 }
@@ -67,7 +68,7 @@ public class SecondGrabScript : MonoBehaviour
             if (holding && currentpuzzlepiece != null)
             {
                 // Debug.Log(Vector3.Distance(currentpuzzlepiece.transform.position, transform.position + transform.forward + transform.right + transform.forward));
-                if (Vector3.Distance(currentpuzzlepiece.transform.position, transform.position + transform.forward + transform.right + transform.forward) > 0.2)
+                if (Vector3.Distance(currentpuzzlepiece.transform.position, transform.position + transform.forward + transform.right + transform.forward) > 1)
                 {
                     //currentpuzzlepiece.transform.position = ((transform.position + transform.forward + transform.right));
                     Vector3 toPlayerVector = transform.position + transform.forward + transform.right + transform.forward;
@@ -86,6 +87,7 @@ public class SecondGrabScript : MonoBehaviour
                 else
                 {
                     currentpuzzlepiece.GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward + transform.right + transform.forward);
+                    currentpuzzlepiece.GetComponent<Rigidbody>().useGravity = false;
                 }
             }
         }
@@ -93,6 +95,7 @@ public class SecondGrabScript : MonoBehaviour
         if (currentpuzzlepiece != null && Vector3.Distance(currentpuzzlepiece.transform.position, transform.position) > dropDistance)
         {
             holding = false;
+            currentpuzzlepiece.GetComponent<Rigidbody>().useGravity = true;
             currentpuzzlepiece = null;
             active = false;
         }

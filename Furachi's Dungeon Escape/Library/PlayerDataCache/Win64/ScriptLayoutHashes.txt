@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/Nathan Burns/Desktop/Furachi's Dungeon Escape/Furachi's Dungeon Escape.exe
+C:/Users/Nathan Burns/Desktop/FinalDeliverable/Furachi's Dungeon Escape.exe
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/Levels/SliceOfLife.unity

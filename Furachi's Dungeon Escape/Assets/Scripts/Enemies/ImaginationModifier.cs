@@ -71,7 +71,7 @@ public class ImaginationModifier : MonoBehaviour
                 imaginationDamagerPerMeter *= specialCubeDistanceCost;
 
                 // restores value so that it is a fresh imagination
-                healthChangedEvent.Invoke(Enumeration.playerState.secondState, specialCubeCost);
+                healthChangedEvent.Invoke(Enumeration.playerState.secondState, -specialCubeCost);
                 EventManager.AddPlayerDeathListeners(DestroySpecialCube);
 
                 accumulatedPieceCost = 0;
@@ -88,7 +88,8 @@ public class ImaginationModifier : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        determinedDistance = Vector3.Distance(playerTransform.position, transform.position) - imaginationSafeDistance;
+        determinedDistance = Mathf.Abs(Vector3.Distance(playerTransform.position, transform.position)) - imaginationSafeDistance;
+        //Debug.Log("ImaginationSafeDiswtande>>>>>>>>>>>>>>>>>>>>> " + imaginationSafeDistance);
 
         // determines of the distance is acceptable for damage
         if (determinedDistance <= 0 && !specialCube)
@@ -106,19 +107,28 @@ public class ImaginationModifier : MonoBehaviour
             //{
             accumulatedPieceCost += Time.deltaTime * imaginationDamagerPerMS;
             //}
+
+            //Debug.Log("reparingRRRRRRRR");
         }
         else
         {
             // changes the imagination based on the distance to the player
             if (determinedDistance != distanceToPlayer)
             {
-                accumulatedPieceCost -= (imaginationDamagerPerMeter * ((determinedDistance) - (distanceToPlayer)));
+                accumulatedPieceCost += (imaginationDamagerPerMeter * ((determinedDistance) - (distanceToPlayer)));
                 healthChangedEvent.Invoke(Enumeration.playerState.secondState, (imaginationDamagerPerMeter * ((determinedDistance) - (distanceToPlayer))));
+                //Debug.Log("Damage: " + imaginationDamagerPerMeter + " * (Determined Distance: " + determinedDistance + " - DistanceToPlayer" + distanceToPlayer + ")");
+                //Debug.Log("Losing: " + (imaginationDamagerPerMeter * ((determinedDistance) - (distanceToPlayer))));
                 distanceToPlayer = determinedDistance;
+                
             }
 
-            healthChangedEvent.Invoke(Enumeration.playerState.secondState, Time.deltaTime * imaginationDamagerPerMS);
-            accumulatedPieceCost -= Time.deltaTime * imaginationDamagerPerMS;
+            if (!specialCube)
+            {
+                healthChangedEvent.Invoke(Enumeration.playerState.secondState, Time.deltaTime * imaginationDamagerPerMS);
+                accumulatedPieceCost -= Time.deltaTime * imaginationDamagerPerMS;
+
+            }
         }
     }
 

@@ -45,7 +45,7 @@ public class AppearingBridge : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         nearestDistance = FindClosestSpiritDistance();
         // only modifies anything if it is close enough

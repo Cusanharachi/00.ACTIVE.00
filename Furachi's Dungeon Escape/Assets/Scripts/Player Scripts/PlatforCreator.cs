@@ -37,7 +37,7 @@ public class PlatforCreator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // makes sure it doesn't create field if it isn't movable
         if (amIMovable)

@@ -82,6 +82,21 @@ PrefabInstance:
       propertyPath: m_BounceIntensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3103791331044208409, guid: fa18f4bf11d077047bccfed28a0e6735,
+        type: 3}
+      propertyPath: m_Range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103791331044208409, guid: fa18f4bf11d077047bccfed28a0e6735,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103791331044208409, guid: fa18f4bf11d077047bccfed28a0e6735,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2447203191261057079, guid: fa18f4bf11d077047bccfed28a0e6735, type: 3}
     - {fileID: 2447203191261057078, guid: fa18f4bf11d077047bccfed28a0e6735, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -46,6 +47,15 @@ public class PauseMenu : MonoBehaviour
                 // starts up time again
                 Time.timeScale = 1;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            //if (Input.GetKeyDown(KeyCode.LeftControl))
+            //{
+                EventManager.ClearManager();
+                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(GameManager.Instance.NextScene, LoadSceneMode.Single);
+            //}
         }
     }
 

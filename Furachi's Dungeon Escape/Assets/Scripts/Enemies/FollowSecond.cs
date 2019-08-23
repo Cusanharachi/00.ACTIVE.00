@@ -72,7 +72,7 @@ public class FollowSecond : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!playerFound && GameObject.FindGameObjectWithTag("Player") != null)
         {
